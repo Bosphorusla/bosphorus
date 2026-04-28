@@ -217,6 +217,14 @@
       font-family: inherit; transition: all 0.16s;
     }
     .btn-del:hover { background: var(--rose); color: var(--white); border-color: var(--rose); }
+    .order-ctrls { display: inline-flex; gap: 2px; margin-right: 4px; }
+    .ord-btn {
+      width: 26px; height: 26px; padding: 0; background: var(--cream); border: 1px solid var(--cream-d);
+      color: var(--char-m); border-radius: 4px; font-size: 0.85rem; cursor: pointer;
+      font-family: inherit; transition: all 0.16s; line-height: 1;
+    }
+    .ord-btn:hover:not(:disabled) { background: var(--terra); color: var(--white); border-color: var(--terra); }
+    .ord-btn:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-toggle-hide {
       padding: 6px 11px; background: none; border: 1px solid var(--cream-d);
       color: var(--gray); border-radius: 5px; font-size: 0.75rem; cursor: pointer;
@@ -507,6 +515,11 @@ function carCardHTML(c, i) {
           ${c.hidden ? '<span class="hidden-tag">HIDDEN</span>' : ''}
         </div>
         <div style="display:flex;gap:8px;align-items:center">
+          <div class="order-ctrls">
+            <button class="ord-btn" onclick="moveCar(${i},-1)" ${i===0?'disabled':''} title="Move up">↑</button>
+            <button class="ord-btn" onclick="moveCar(${i}, 1)" ${i===CARS.length-1?'disabled':''} title="Move down">↓</button>
+            <button class="ord-btn" onclick="moveCarToTop(${i})" ${i===0?'disabled':''} title="Move to top">⤒</button>
+          </div>
           <button class="btn-toggle-hide" onclick="toggleHide(${i})">${c.hidden ? '👁 Show' : '🚫 Hide'}</button>
           <button class="btn-del" onclick="deleteCar(${i})">Delete</button>
         </div>
@@ -685,6 +698,22 @@ function refreshHotStripe(i) {
 
 function toggleHide(i) {
   CARS[i].hidden = !CARS[i].hidden;
+  markDirty();
+  renderInventory();
+}
+
+function moveCar(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= CARS.length) return;
+  [CARS[i], CARS[j]] = [CARS[j], CARS[i]];
+  markDirty();
+  renderInventory();
+}
+
+function moveCarToTop(i) {
+  if (i === 0) return;
+  const [c] = CARS.splice(i, 1);
+  CARS.unshift(c);
   markDirty();
   renderInventory();
 }
