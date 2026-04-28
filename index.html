@@ -740,6 +740,7 @@
       nav { padding: 14px 5vw; }
       .wordmark { font-size: 1.05rem; }
       .nav-right a:not(.nav-cta) { display: none; }
+      .nav-right.mob-open a:not(.nav-cta) { display: block; color: var(--char); font-size: 0.95rem; padding: 6px 0; }
       .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
       .nav-mob-btn { display: flex; }
       .hero-visual { height: 440px; }
@@ -1450,15 +1451,17 @@ function submitTradeIn(e) {
 /* ── MOBILE NAV ── */
 function toggleNav() {
   const nr = document.getElementById('nav-right');
-  const open = nr.style.display === 'flex';
-  nr.style.display = open ? '' : 'flex';
-  if (!open) {
+  const open = nr.classList.toggle('mob-open');
+  if (open) {
     Object.assign(nr.style, {
-      flexDirection:'column', position:'absolute',
-      top:'64px', left:'0', right:'0',
-      background:'var(--cream)', borderBottom:'1px solid var(--cream-d)',
-      padding:'16px 6vw', gap:'18px', zIndex:'199'
+      display:'flex', flexDirection:'column', alignItems:'stretch',
+      position:'absolute', top:'56px', left:'0', right:'0',
+      background:'rgba(14,15,18,0.97)', backdropFilter:'blur(12px)',
+      borderBottom:'1px solid rgba(184,137,74,0.22)',
+      padding:'18px 5vw 22px', gap:'4px', zIndex:'199'
     });
+  } else {
+    nr.removeAttribute('style');
   }
 }
 </script>
