@@ -225,13 +225,21 @@
       transition: transform 0.42s cubic-bezier(.4,.0,.2,1), opacity 0.32s;
     }
     .hero-car-wrap svg { width: 100%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.4)); }
-    .hero-car-wrap.has-photo { width: 92%; max-width: 620px; bottom: 14%; }
+    .hero-car-wrap.has-photo {
+      width: 92%; max-width: 880px;
+      top: 50%; bottom: auto;
+      transform: translate(-50%, -50%);
+    }
     .hero-car-photo {
       width: 100%; aspect-ratio: 16/10; object-fit: cover;
       border-radius: 16px; display: block;
       box-shadow: 0 28px 64px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.35);
       border: 1px solid rgba(255,255,255,0.08);
     }
+    .hero-car-wrap.has-photo.slide-out-l { transform: translate(-180%, -50%); opacity: 0; }
+    .hero-car-wrap.has-photo.slide-out-r { transform: translate(80%, -50%); opacity: 0; }
+    .hero-car-wrap.has-photo.slide-in-l  { transform: translate(-180%, -50%); opacity: 0; transition: none; }
+    .hero-car-wrap.has-photo.slide-in-r  { transform: translate(80%, -50%); opacity: 0; transition: none; }
     .hero-car-wrap.slide-out-l { transform: translateX(-180%); opacity: 0; }
     .hero-car-wrap.slide-out-r { transform: translateX(80%); opacity: 0; }
     .hero-car-wrap.slide-in-l  { transform: translateX(-180%); opacity: 0; transition: none; }
