@@ -308,8 +308,75 @@
       .live-link { display: none; }
     }
   </style>
+  <style>
+    #pw-gate {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #1E1A17; color: #F5EFE4;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+    #pw-gate .pw-box {
+      background: #2A2421; border: 1px solid rgba(184,137,74,0.25);
+      border-radius: 14px; padding: 36px 32px; width: 320px; max-width: 88vw;
+      text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+    #pw-gate h2 {
+      font-family: 'Cormorant', serif; font-size: 1.7rem; font-weight: 600;
+      margin-bottom: 6px; color: #B8894A;
+    }
+    #pw-gate p { font-size: 0.85rem; color: rgba(245,239,228,0.6); margin-bottom: 22px; }
+    #pw-gate input {
+      width: 100%; background: #1E1A17; border: 1.5px solid rgba(184,137,74,0.3);
+      padding: 12px 14px; border-radius: 8px; color: #F5EFE4;
+      font-size: 1rem; font-family: 'DM Sans', sans-serif; outline: none;
+      letter-spacing: 0.18em; text-align: center; margin-bottom: 12px;
+    }
+    #pw-gate input:focus { border-color: #B8894A; }
+    #pw-gate button {
+      width: 100%; background: #B8894A; color: #fff; border: none;
+      padding: 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+    }
+    #pw-gate button:hover { background: #9C7239; }
+    #pw-gate .pw-err { color: #E08577; font-size: 0.78rem; margin-top: 10px; min-height: 1em; }
+  </style>
 </head>
 <body>
+<div id="pw-gate">
+  <div class="pw-box">
+    <h2>Bosphorus Auto</h2>
+    <p>Admin access</p>
+    <input id="pw-input" type="password" inputmode="numeric" autocomplete="off" autofocus />
+    <button onclick="checkPw()">Unlock</button>
+    <div class="pw-err" id="pw-err"></div>
+  </div>
+</div>
+<script>
+(function() {
+  const PW = '3691221';
+  if (sessionStorage.getItem('admin_ok') === '1') {
+    document.getElementById('pw-gate').remove();
+    return;
+  }
+  document.body.style.overflow = 'hidden';
+  window.checkPw = function() {
+    const v = document.getElementById('pw-input').value;
+    if (v === PW) {
+      sessionStorage.setItem('admin_ok', '1');
+      document.getElementById('pw-gate').remove();
+      document.body.style.overflow = '';
+    } else {
+      document.getElementById('pw-err').textContent = 'Incorrect password';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  };
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && document.getElementById('pw-gate')) checkPw();
+  });
+})();
+</script>
+
 
 <!-- LOGIN -->
 <div id="loginScreen">
