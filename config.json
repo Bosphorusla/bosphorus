@@ -1,62 +1,72 @@
 {
   "_readme": "Edit this file to update all text and contact info across the site. No coding required. Save the file and refresh the browser to see changes.",
-
-  "dealerName":  "Bosphorus Auto",
-  "year":        "2026",
-
-  "phone":       "(310) 555-0000",
-  "phoneTel":    "tel:+13105550000",
-  "phoneSms":    "sms:+13105550000",
-
-  "address":     "1234 W Rosecrans Ave",
-  "cityFull":    "Gardena, CA 90249",
-  "cityShort":   "Gardena, California",
-  "region":      "South Bay LA",
-  "hours":       "Open 7 days · 9am to 7pm",
-
+  "dealerName": "Bosphorus Auto",
+  "year": "2026",
+  "phone": "(310) 555-0000",
+  "phoneTel": "tel:+13105550000",
+  "phoneSms": "sms:+13105550000",
+  "address": "1234 W Rosecrans Ave",
+  "cityFull": "Gardena, CA 90249",
+  "cityShort": "Gardena, California",
+  "region": "South Bay LA",
+  "hours": "Open 7 days · 9am to 7pm",
   "heroEyebrow": "Gardena, California · South Bay LA",
   "heroTagline": "Pre-Owned,<br><em>Properly</em><br>Sourced.",
-  "heroDesc":    "No nonsense, no hidden fees. Quality used cars hand-selected for the people who live and drive in Los Angeles.",
-  "heroVideo":   "assets/hero.mp4",
-  "heroPoster":  "",
-
+  "heroDesc": "No nonsense, no hidden fees. Quality used cars hand-selected for the people who live and drive in Los Angeles.",
+  "heroVideo": "assets/hero.mp4",
+  "heroPoster": "",
   "stats": [
-    { "n": "30+", "l": "Cars in stock"    },
-    { "n": "5★",  "l": "Google rating"    },
-    { "n": "7",   "l": "Day return policy" }
+    {
+      "n": "30+",
+      "l": "Cars in stock"
+    },
+    {
+      "n": "5★",
+      "l": "Google rating"
+    },
+    {
+      "n": "7",
+      "l": "Day return policy"
+    }
   ],
-
   "trustParagraph": "We're a small dealer doing things right. Every car gets inspected, every price is the price, and we're not trying to rush you into anything. We want you to leave happy and send your friends.",
-
   "pillars": [
-    { "n": "30+", "l": "Vehicles in stock" },
-    { "n": "5★",  "l": "Google rating"     },
-    { "n": "7",   "l": "Day return window"  },
-    { "n": "$0",  "l": "Hidden fees"        }
+    {
+      "n": "30+",
+      "l": "Vehicles in stock"
+    },
+    {
+      "n": "5★",
+      "l": "Google rating"
+    },
+    {
+      "n": "7",
+      "l": "Day return window"
+    },
+    {
+      "n": "$0",
+      "l": "Hidden fees"
+    }
   ],
-
   "reviews": [
     {
-      "text":     "Found the car I'd been looking for at a price I could actually work with. No back-and-forth, no upsells. Straightforward from start to finish.",
-      "author":   "Marcus T.",
+      "text": "Found the car I'd been looking for at a price I could actually work with. No back-and-forth, no upsells. Straightforward from start to finish.",
+      "author": "Marcus T.",
       "location": "Compton, CA"
     },
     {
-      "text":     "I was skeptical of used car lots after a bad experience elsewhere, but these guys were different. Walked me through everything and I drove off the same day.",
-      "author":   "Jasmine R.",
+      "text": "I was skeptical of used car lots after a bad experience elsewhere, but these guys were different. Walked me through everything and I drove off the same day.",
+      "author": "Jasmine R.",
       "location": "Hawthorne, CA"
     },
     {
-      "text":     "Traded in my old Accord and got more than I expected. Clean inventory, no pressure, just good vibes. Will definitely be back.",
-      "author":   "Deon W.",
+      "text": "Traded in my old Accord and got more than I expected. Clean inventory, no pressure, just good vibes. Will definitely be back.",
+      "author": "Deon W.",
       "location": "Carson, CA"
     }
   ],
-
-  "ctaHeading":    "Come see us<br>in <em>Gardena.</em>",
-  "ctaSubtext":    "Open 7 days · 9am to 7pm · 1234 W Rosecrans Ave, Gardena CA",
-
+  "ctaHeading": "Come see us<br>in <em>Gardena.</em>",
+  "ctaSubtext": "Open 7 days · 9am to 7pm · 1234 W Rosecrans Ave, Gardena CA",
   "footerTagline": "Quality pre-owned vehicles in Gardena, CA. Serving the South Bay and greater Los Angeles.",
-
   "carCtaSubtitle": "Call or text us to schedule a test drive. We're in Gardena, open 7 days a week."
 }
