@@ -1,25 +1,44 @@
 [
   {
-    "id": 32,
-    "year": 2023,
-    "make": "Honda",
-    "model": "Civic",
-    "type": "sedan",
-    "price": 23000,
-    "miles": "1234",
+    "id": 31,
+    "year": 2026,
+    "make": "Ferrari",
+    "model": "812",
+    "type": "coupe",
+    "price": 499.999,
+    "miles": "",
     "trans": "Automatic",
     "color": "",
-    "engine": "2.0L 4-Cylinder",
-    "mpg": "31/40",
+    "engine": "6.5L V12",
+    "mpg": "12/16",
     "vin": "",
-    "hot": false,
+    "hot": true,
     "g": [
       "#9EA5AD",
       "#6A7078"
     ],
     "photos": [
-      "assets/cars/32/moi0tyvj-civic-1.jpeg",
-      "assets/cars/32/moi0tzxj-civic-2.jpeg"
+      "assets/cars/31/mohwq93m-ferrari-812-competizione-2339-1.jpg"
+    ],
+    "hidden": false
+  },
+  {
+    "id": 3,
+    "year": 2026,
+    "make": "BMW",
+    "model": "4 Series",
+    "type": "coupe",
+    "price": 111111,
+    "miles": "22,222",
+    "trans": "Automatic",
+    "color": "Black Sapphire",
+    "engine": "2.0L Turbo 4-Cylinder",
+    "mpg": "25/34",
+    "vin": "WBA5R1C50KAE00003",
+    "hot": true,
+    "g": [
+      "#2C2C2C",
+      "#101010"
     ]
   },
   {
@@ -41,7 +60,7 @@
       "#6A7078"
     ],
     "photos": [
-      "assets/cars/1/moi0xbok-modded-toyota-camry.jpg"
+      "assets/cars/1/moi155hw-modded-toyota-camry.jpg"
     ]
   },
   {
@@ -65,48 +84,6 @@
     "photos": [
       "https://hips.hearstapps.com/hmg-prod/images/2020-honda-cr-v-hybrid-drive-109-1584417693.jpg?crop=0.936xw:0.790xh;0.0586xw,0.134xh&resize=2048:*"
     ]
-  },
-  {
-    "id": 3,
-    "year": 2019,
-    "make": "BMW",
-    "model": "3 Series 330i",
-    "type": "sedan",
-    "price": 27800,
-    "miles": "52,400",
-    "trans": "Automatic",
-    "color": "Black Sapphire",
-    "engine": "2.0L Turbo 4-Cylinder",
-    "mpg": "26/36",
-    "vin": "WBA5R1C50KAE00003",
-    "hot": false,
-    "g": [
-      "#2C2C2C",
-      "#101010"
-    ]
-  },
-  {
-    "id": 31,
-    "year": 2026,
-    "make": "Ferrari",
-    "model": "812",
-    "type": "coupe",
-    "price": 499.999,
-    "miles": "",
-    "trans": "Automatic",
-    "color": "",
-    "engine": "6.5L V12",
-    "mpg": "12/16",
-    "vin": "",
-    "hot": true,
-    "g": [
-      "#9EA5AD",
-      "#6A7078"
-    ],
-    "photos": [
-      "assets/cars/31/mohwq93m-ferrari-812-competizione-2339-1.jpg"
-    ],
-    "hidden": false
   },
   {
     "id": 4,
