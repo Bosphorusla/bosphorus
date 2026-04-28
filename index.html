@@ -1117,9 +1117,7 @@ let showIdx = 0;
 let showAnimating = false;
 
 function buildShowroom() {
-  const hots = CARS.filter(c => c.hot);
-  const rest = CARS.filter(c => !c.hot);
-  SHOW = [...hots, ...rest];
+  SHOW = [...CARS];
   document.getElementById('show-tot').textContent = SHOW.length;
   const dots = document.getElementById('show-dots');
   dots.innerHTML = SHOW.map((_, i) => `<span class="show-dot" data-i="${i}"></span>`).join('');
