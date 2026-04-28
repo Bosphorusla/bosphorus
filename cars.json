@@ -6,7 +6,7 @@
     "model": "Civic",
     "type": "sedan",
     "price": 23000,
-    "miles": "",
+    "miles": "1234",
     "trans": "Automatic",
     "color": "",
     "engine": "2.0L 4-Cylinder",
