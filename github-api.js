@@ -64,7 +64,7 @@ async function uploadFileToGitHub(filePath, content, message, token) {
   });
   if (!r.ok) {
     const e = await r.json().catch(() => ({}));
-    if (r.status === 401) throw new Error('Invalid GitHub token.');
+    if (r.status === 401) { clearCachedToken(); throw new Error('Invalid GitHub token. Please try again.'); }
     throw new Error(`GitHub error: ${e.message || r.statusText}`);
   }
   return r.json();

@@ -823,7 +823,7 @@ async function publish() {
   btn.disabled = true; btn.textContent = 'Publishing…';
 
   try {
-    const token = promptForGitHubToken();
+    const token = getCachedToken();
     const carsJson = JSON.stringify(CARS, null, 2);
     const cfgJson  = JSON.stringify(CFG,  null, 2);
 
