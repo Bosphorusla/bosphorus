@@ -1,5 +1,28 @@
 [
   {
+    "id": 32,
+    "year": 2023,
+    "make": "Honda",
+    "model": "Civic",
+    "type": "sedan",
+    "price": 23000,
+    "miles": "17,000",
+    "trans": "Automatic",
+    "color": "Black",
+    "engine": "2.0L 4-Cylinder",
+    "mpg": "31/40",
+    "vin": "12345",
+    "hot": true,
+    "g": [
+      "#9EA5AD",
+      "#6A7078"
+    ],
+    "photos": [
+      "assets/cars/32/moi17atb-civic-1.jpeg",
+      "assets/cars/32/moi17bqz-civic-2.jpeg"
+    ]
+  },
+  {
     "id": 31,
     "year": 2026,
     "make": "Ferrari",
