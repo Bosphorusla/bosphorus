@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory — Gardena Motors</title>
+  <meta name="description" content="Browse our full inventory of quality pre-owned vehicles in Gardena, CA. Sedans, SUVs, trucks, and coupes — all inspected, no hidden fees." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F5EFE4;
+      --cream-m: #EDE4D3;
+      --cream-d: #E0D4BC;
+      --terra:   #C4602A;
+      --terra-d: #A34E21;
+      --terra-l: #D97B46;
+      --char:    #1E1A17;
+      --char-m:  #3D3830;
+      --gray:    #8A8076;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--char); -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(245,239,228,0.93); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--cream-d);
+      padding: 0 6vw; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .wordmark { font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--char); text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 30px; }
+    .nav-right a { font-size: 0.82rem; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.18s; }
+    .nav-right a:hover, .nav-right a.active { color: var(--char); }
+    .nav-cta { background: var(--terra) !important; color: var(--white) !important; padding: 8px 20px; border-radius: 7px; font-weight: 500 !important; transition: background 0.18s !important; }
+    .nav-cta:hover { background: var(--terra-d) !important; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 40px 6vw 32px;
+      border-bottom: 1px solid var(--cream-d);
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .page-header-left .breadcrumb { font-size: 0.76rem; color: var(--gray); display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+    .page-header-left .breadcrumb a { color: var(--gray); text-decoration: none; transition: color 0.18s; }
+    .page-header-left .breadcrumb a:hover { color: var(--terra); }
+    .page-header-left .breadcrumb span { color: var(--cream-d); }
+    .page-header h1 { font-family: 'Cormorant', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; line-height: 1.1; }
+    .results-meta { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+    .results-meta strong { color: var(--char); }
+    .sort-row { display: flex; align-items: center; gap: 10px; }
+    .sort-label { font-size: 0.78rem; color: var(--gray); white-space: nowrap; }
+    .sort-select {
+      background: var(--white); border: 1.5px solid var(--cream-d);
+      padding: 8px 12px; border-radius: 7px;
+      font-size: 0.82rem; color: var(--char); font-family: 'DM Sans', sans-serif;
+      appearance: none; outline: none; transition: border-color 0.18s; cursor: pointer;
+    }
+    .sort-select:focus { border-color: var(--terra); }
+
+    /* ── LAYOUT ── */
+    .inventory-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 32px;
+      padding: 32px 6vw 80px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { position: sticky; top: 80px; }
+    .sidebar-inner { background: var(--white); border: 1px solid var(--cream-d); border-radius: 12px; overflow: hidden; }
+    .filter-section { padding: 18px 20px; border-bottom: 1px solid var(--cream-d); }
+    .filter-section:last-child { border-bottom: none; }
+    .filter-title {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: space-between; cursor: pointer;
+    }
+    .filter-title svg { transition: transform 0.2s; }
+    .filter-title.collapsed svg { transform: rotate(-90deg); }
+
+    /* Checkboxes */
+    .check-list { display: flex; flex-direction: column; gap: 9px; }
+    .check-item { display: flex; align-items: center; gap: 9px; cursor: pointer; }
+    .check-item input[type="checkbox"] {
+      width: 16px; height: 16px; accent-color: var(--terra);
+      cursor: pointer; flex-shrink: 0;
+    }
+    .check-item label { font-size: 0.84rem; color: var(--char-m); cursor: pointer; flex: 1; }
+    .check-item .count { font-size: 0.72rem; color: var(--gray); }
+
+    /* Range inputs */
+    .range-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .range-input {
+      background: var(--cream); border: 1.5px solid var(--cream-d);
+      padding: 8px 10px; border-radius: 7px;
+      font-size: 0.82rem; color: var(--char); font-family: 'DM Sans', sans-serif;
+      width: 100%; outline: none; transition: border-color 0.18s;
+    }
+    .range-input:focus { border-color: var(--terra); background: var(--white); }
+    .range-input::placeholder { color: var(--gray); }
+
+    /* Clear filters */
+    .clear-btn {
+      width: 100%; padding: 11px; border: none;
+      background: var(--cream-m); color: var(--gray);
+      font-size: 0.82rem; font-weight: 500; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: background 0.18s, color 0.18s;
+    }
+    .clear-btn:hover { background: var(--cream-d); color: var(--char); }
+
+    /* ── GRID AREA ── */
+    .grid-area {}
+    .no-results {
+      grid-column: 1/-1; padding: 60px 0; text-align: center;
+    }
+    .no-results p { font-size: 0.95rem; color: var(--gray); margin-bottom: 16px; }
+    .no-results button {
+      background: var(--terra); color: var(--white);
+      border: none; padding: 11px 22px; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 500; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .car-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+
+    /* Car card */
+    .car-card { background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--cream-d); transition: box-shadow 0.22s, transform 0.22s; cursor: pointer; }
+    .car-card:hover { box-shadow: 0 10px 36px rgba(30,26,23,0.1); transform: translateY(-2px); }
+    .card-img { position: relative; width: 100%; aspect-ratio: 3/2; overflow: hidden; }
+    .card-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+    .card-ph .color-note { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+    .card-photo { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+    .car-card:hover .card-photo { transform: scale(1.04); }
+    .card-badge { position: absolute; top: 10px; left: 10px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 5px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.16); color: rgba(255,255,255,0.88); }
+    .card-badge.hot { background: rgba(196,96,42,0.88); color: var(--white); border-color: transparent; }
+    .card-body { padding: 14px 16px 16px; }
+    .card-sub { font-size: 0.72rem; color: var(--gray); margin-bottom: 2px; }
+    .card-name { font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600; color: var(--char); margin-bottom: 9px; line-height: 1.2; }
+    .card-specs { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .card-spec { font-size: 0.72rem; color: var(--gray); display: flex; align-items: center; gap: 3px; }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; }
+    .card-price { font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 600; line-height: 1; }
+    .card-price sub { font-size: 0.6rem; font-family: 'DM Sans', sans-serif; color: var(--gray); font-weight: 400; }
+    .card-btn { font-size: 0.74rem; font-weight: 500; color: var(--terra); background: none; border: 1.5px solid var(--cream-d); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.16s; }
+    .card-btn:hover { background: var(--terra); color: var(--white); border-color: var(--terra); }
+
+    /* ── LOAD MORE ── */
+    .load-more-wrap { text-align: center; padding: 36px 0 0; }
+    .load-more-btn {
+      background: var(--white); color: var(--char);
+      border: 1.5px solid var(--cream-d);
+      padding: 12px 32px; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 500; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.18s;
+    }
+    .load-more-btn:hover { border-color: var(--terra); color: var(--terra); }
+    .load-more-btn:disabled { opacity: 0.4; cursor: default; }
+
+    /* ── FOOTER ── */
+    footer { background: #14100D; padding: 36px 6vw 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-bottom p { font-size: 0.74rem; color: rgba(255,255,255,0.18); }
+    .footer-bottom a { font-size: 0.74rem; color: rgba(255,255,255,0.35); text-decoration: none; }
+
+    /* ── MOBILE FILTER TOGGLE ── */
+    .filter-toggle {
+      display: none; align-items: center; gap: 8px;
+      background: var(--white); border: 1.5px solid var(--cream-d);
+      padding: 9px 16px; border-radius: 8px;
+      font-size: 0.84rem; font-weight: 500; color: var(--char);
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      margin-bottom: 16px;
+    }
+    .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 299; }
+    .sidebar-overlay.open { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .inventory-layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+        background: var(--cream); z-index: 300; overflow-y: auto;
+        transition: left 0.28s ease; padding: 24px 0 60px;
+      }
+      .sidebar.open { left: 0; }
+      .filter-toggle { display: flex; }
+      .sidebar-close {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 20px 16px; font-size: 0.9rem; font-weight: 600;
+        border-bottom: 1px solid var(--cream-d); margin-bottom: 8px;
+      }
+      .sidebar-close button { background: none; border: none; cursor: pointer; padding: 4px; }
+    }
+    @media (max-width: 640px) {
+      .nav-right a:not(.nav-cta) { display: none; }
+      .page-header { flex-direction: column; align-items: flex-start; }
+      .car-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .car-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="wordmark" data-cfg="dealerName">Gardena Motors</a>
+  <div class="nav-right">
+    <a href="inventory.html" class="active">Inventory</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="tel:+13105550000" class="nav-cta" data-cfg-href="phoneTel">Call Us</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-left">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>›</span><span>Inventory</span>
+    </div>
+    <h1>Full Inventory</h1>
+    <p class="results-meta" id="results-meta">Loading vehicles…</p>
+  </div>
+  <div class="sort-row">
+    <span class="sort-label">Sort by</span>
+    <select class="sort-select" id="sort-select" onchange="applyFilters()">
+      <option value="default">Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="year-desc">Year: Newest First</option>
+      <option value="year-asc">Year: Oldest First</option>
+      <option value="miles-asc">Mileage: Low to High</option>
+    </select>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="inventory-layout">
+
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-close">
+      <span>Filters</span>
+      <button onclick="closeSidebar()" aria-label="Close filters">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="sidebar-inner">
+
+      <!-- Body Type -->
+      <div class="filter-section">
+        <div class="filter-title">Body Type
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="check-list" id="type-filters">
+          <label class="check-item"><input type="checkbox" value="sedan" onchange="applyFilters()"><label>Sedan</label><span class="count" id="ct-sedan"></span></label>
+          <label class="check-item"><input type="checkbox" value="suv" onchange="applyFilters()"><label>SUV</label><span class="count" id="ct-suv"></span></label>
+          <label class="check-item"><input type="checkbox" value="truck" onchange="applyFilters()"><label>Truck</label><span class="count" id="ct-truck"></span></label>
+          <label class="check-item"><input type="checkbox" value="coupe" onchange="applyFilters()"><label>Coupe</label><span class="count" id="ct-coupe"></span></label>
+        </div>
+      </div>
+
+      <!-- Make -->
+      <div class="filter-section">
+        <div class="filter-title">Make
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="check-list" id="make-filters"></div>
+      </div>
+
+      <!-- Price -->
+      <div class="filter-section">
+        <div class="filter-title">Price Range
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="range-row">
+          <input class="range-input" type="number" id="price-min" placeholder="Min $" onchange="applyFilters()" />
+          <input class="range-input" type="number" id="price-max" placeholder="Max $" onchange="applyFilters()" />
+        </div>
+      </div>
+
+      <!-- Year -->
+      <div class="filter-section">
+        <div class="filter-title">Year
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="range-row">
+          <input class="range-input" type="number" id="year-min" placeholder="From" onchange="applyFilters()" />
+          <input class="range-input" type="number" id="year-max" placeholder="To" onchange="applyFilters()" />
+        </div>
+      </div>
+
+      <!-- Mileage -->
+      <div class="filter-section">
+        <div class="filter-title">Max Mileage
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <select class="sort-select" id="miles-max" onchange="applyFilters()" style="width:100%">
+          <option value="">Any mileage</option>
+          <option value="20000">Under 20,000 mi</option>
+          <option value="40000">Under 40,000 mi</option>
+          <option value="60000">Under 60,000 mi</option>
+          <option value="80000">Under 80,000 mi</option>
+        </select>
+      </div>
+
+      <!-- Hot deals -->
+      <div class="filter-section">
+        <label class="check-item">
+          <input type="checkbox" id="hot-only" onchange="applyFilters()" />
+          <label style="font-weight:500">Hot Deals only</label>
+        </label>
+      </div>
+
+      <button class="clear-btn" onclick="clearFilters()">Clear all filters</button>
+    </div>
+  </aside>
+
+  <!-- GRID AREA -->
+  <div class="grid-area">
+    <button class="filter-toggle" onclick="openSidebar()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 4h18M7 12h10M11 20h2"/></svg>
+      Filters
+      <span id="filter-badge" style="display:none;background:var(--terra);color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:10px;"></span>
+    </button>
+    <div class="car-grid" id="car-grid"></div>
+    <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+      <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">Show more vehicles</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <p id="cfg-copyright">© 2026 Gardena Motors · 1234 W Rosecrans Ave, Gardena CA 90249</p>
+    <a href="index.html">← Back to home</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+let ALL_CARS = [];
+let filtered  = [];
+let shown     = 0;
+const PAGE    = 12;
+
+/* ── LOAD ── */
+Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
+  .then(([cfg, data]) => {
+    const cp = document.getElementById('cfg-copyright');
+    if (cp && cfg) cp.textContent = `© ${cfg.year} ${cfg.dealerName} · ${cfg.address}, ${cfg.cityFull}`;
+    ALL_CARS = data;
+    buildMakeFilters();
+    updateCounts();
+    applyFilters();
+  });
+
+/* ── BUILD MAKE CHECKBOXES ── */
+function buildMakeFilters() {
+  const makes = [...new Set(ALL_CARS.map(c => c.make))].sort();
+  document.getElementById('make-filters').innerHTML = makes.map(m =>
+    `<label class="check-item">
+      <input type="checkbox" value="${m}" onchange="applyFilters()" />
+      <label>${m}</label>
+    </label>`
+  ).join('');
+}
+
+/* ── UPDATE TYPE COUNTS ── */
+function updateCounts() {
+  ['sedan','suv','truck','coupe'].forEach(t => {
+    const el = document.getElementById('ct-' + t);
+    if (el) el.textContent = ALL_CARS.filter(c => c.type === t).length;
+  });
+}
+
+/* ── FILTER + SORT ── */
+function applyFilters() {
+  const types    = checkedValues('#type-filters input');
+  const makes    = checkedValues('#make-filters input');
+  const priceMin = num('price-min');
+  const priceMax = num('price-max') || Infinity;
+  const yearMin  = num('year-min')  || 0;
+  const yearMax  = num('year-max')  || 9999;
+  const milesMax = num('miles-max') || Infinity;
+  const hotOnly  = document.getElementById('hot-only').checked;
+  const sort     = document.getElementById('sort-select').value;
+
+  filtered = ALL_CARS.filter(c => {
+    if (types.length  && !types.includes(c.type))  return false;
+    if (makes.length  && !makes.includes(c.make))  return false;
+    if (c.price < priceMin || c.price > priceMax)  return false;
+    if (c.year  < yearMin  || c.year  > yearMax)   return false;
+    if (milesRaw(c) > milesMax)                    return false;
+    if (hotOnly && !c.hot)                         return false;
+    return true;
+  });
+
+  /* Sort */
+  filtered.sort((a, b) => {
+    if (sort === 'price-asc')  return a.price - b.price;
+    if (sort === 'price-desc') return b.price - a.price;
+    if (sort === 'year-desc')  return b.year  - a.year;
+    if (sort === 'year-asc')   return a.year  - b.year;
+    if (sort === 'miles-asc')  return milesRaw(a) - milesRaw(b);
+    return b.hot - a.hot; /* default: hot deals first */
+  });
+
+  shown = 0;
+  document.getElementById('car-grid').innerHTML = '';
+  loadMore();
+  updateMeta();
+  updateFilterBadge(types, makes, priceMin, priceMax === Infinity ? 0 : priceMax, yearMin, yearMax === 9999 ? 0 : yearMax, milesMax === Infinity ? 0 : milesMax, hotOnly);
+}
+
+function loadMore() {
+  const batch = filtered.slice(shown, shown + PAGE);
+  const grid  = document.getElementById('car-grid');
+  if (!batch.length && shown === 0) {
+    grid.innerHTML = `<div class="no-results">
+      <p>No vehicles match your current filters.</p>
+      <button onclick="clearFilters()">Clear filters</button>
+    </div>`;
+  } else {
+    grid.insertAdjacentHTML('beforeend', batch.map(mkCard).join(''));
+    shown += batch.length;
+  }
+  const wrap = document.getElementById('load-more-wrap');
+  const btn  = document.getElementById('load-more-btn');
+  if (shown < filtered.length) {
+    wrap.style.display = 'block';
+    btn.textContent = `Show ${Math.min(PAGE, filtered.length - shown)} more  (${filtered.length - shown} remaining)`;
+    btn.disabled = false;
+  } else {
+    wrap.style.display = 'none';
+  }
+}
+
+function updateMeta() {
+  const el = document.getElementById('results-meta');
+  const total = ALL_CARS.length;
+  if (filtered.length === total) {
+    el.innerHTML = `Showing all <strong>${total}</strong> vehicles`;
+  } else {
+    el.innerHTML = `<strong>${filtered.length}</strong> of ${total} vehicles match your filters`;
+  }
+}
+
+function updateFilterBadge(...vals) {
+  const active = vals.filter(Boolean).length;
+  const badge  = document.getElementById('filter-badge');
+  if (active > 0) {
+    badge.style.display = 'inline';
+    badge.textContent   = active;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+/* ── CLEAR ── */
+function clearFilters() {
+  document.querySelectorAll('#type-filters input, #make-filters input').forEach(i => i.checked = false);
+  ['price-min','price-max','year-min','year-max'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('miles-max').value = '';
+  document.getElementById('hot-only').checked = false;
+  document.getElementById('sort-select').value = 'default';
+  applyFilters();
+}
+
+/* ── SIDEBAR (mobile) ── */
+function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-overlay').classList.add('open'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('open'); }
+
+/* ── HELPERS ── */
+function checkedValues(sel) { return [...document.querySelectorAll(sel)].filter(i => i.checked).map(i => i.value); }
+function num(id) { return parseInt(document.getElementById(id)?.value) || 0; }
+function milesRaw(c) { return parseInt(c.miles.replace(/,/g,'')) || 0; }
+</script>
+</body>
+</html>

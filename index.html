@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gardena Motors — Quality Pre-Owned Vehicles, Gardena CA</title>
+  <meta name="description" content="Quality pre-owned vehicles in Gardena, CA. Transparent pricing, no hidden fees. Serving the South Bay and greater Los Angeles." />
+  <meta name="theme-color" content="#C4602A" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://gardenamotors.com/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gardena Motors — Quality Pre-Owned Vehicles, Gardena CA" />
+  <meta property="og:description" content="Hand-selected pre-owned cars for the people who live and drive in Los Angeles. Transparent pricing, 7-day return policy, no hidden fees." />
+  <meta property="og:url" content="https://gardenamotors.com/" />
+  <meta property="og:image" content="https://gardenamotors.com/assets/og.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- AutoDealer structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoDealer",
+    "name": "Gardena Motors",
+    "image": "https://gardenamotors.com/assets/og.jpg",
+    "url": "https://gardenamotors.com/",
+    "telephone": "+1-310-555-0000",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1234 W Rosecrans Ave",
+      "addressLocality": "Gardena",
+      "addressRegion": "CA",
+      "postalCode": "90249",
+      "addressCountry": "US"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 33.9023, "longitude": -118.3090 },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }],
+    "areaServed": ["Gardena","South Bay","Los Angeles","Compton","Hawthorne","Carson","Torrance"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F5EFE4;
+      --cream-m:  #EDE4D3;
+      --cream-d:  #E0D4BC;
+      --terra:    #C4602A;
+      --terra-d:  #A34E21;
+      --terra-l:  #D97B46;
+      --char:     #1E1A17;
+      --char-m:   #3D3830;
+      --gray:     #8A8076;
+      --sage:     #7A9B8A;
+      --white:    #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--char);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: transparent;
+      backdrop-filter: none; -webkit-backdrop-filter: none;
+      padding: 0 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(245,239,228,0.93);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .wordmark {
+      font-family: 'Cormorant', serif;
+      font-size: 1.15rem; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav.scrolled .wordmark { color: var(--char); }
+    .nav-right { display: flex; align-items: center; gap: 30px; }
+    .nav-right a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .nav-right a:hover { color: var(--white); }
+    nav.scrolled .nav-right a { color: var(--gray); }
+    nav.scrolled .nav-right a:hover { color: var(--char); }
+    .nav-mob-btn span { background: var(--white); transition: background 0.3s ease; }
+    nav.scrolled .nav-mob-btn span { background: var(--char); }
+    .nav-cta {
+      background: var(--terra) !important; color: var(--white) !important;
+      padding: 8px 20px; border-radius: 7px;
+      font-weight: 500 !important; transition: background 0.18s !important;
+    }
+    .nav-cta:hover { background: var(--terra-d) !important; }
+    .nav-mob-btn {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 4px; flex-direction: column; gap: 5px;
+    }
+    .nav-mob-btn span { display: block; width: 22px; height: 2px; border-radius: 2px; }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid; grid-template-columns: 55% 1fr;
+      min-height: calc(100vh - 64px);
+    }
+    .hero-copy {
+      padding: 80px 6vw 80px 6vw;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-bg-video {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      aspect-ratio: auto;
+      object-fit: cover; object-position: center;
+      z-index: 0; opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+    .hero-bg-video.ready { opacity: 1; }
+    .hero-copy.has-video::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(95deg, rgba(20,16,13,0.78) 0%, rgba(20,16,13,0.55) 55%, rgba(20,16,13,0.25) 100%);
+    }
+    .hero-copy > *:not(.hero-bg-video) { position: relative; z-index: 2; }
+    .hero-copy.has-video .eyebrow { color: var(--terra-l); }
+    .hero-copy.has-video .eyebrow::before { background: var(--terra-l); }
+    .hero-copy.has-video h1 { color: var(--white); }
+    .hero-copy.has-video h1 em { color: var(--terra-l); }
+    .hero-copy.has-video .hero-desc { color: rgba(255,255,255,0.78); }
+    .hero-copy.has-video .btn-link { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25); }
+    .hero-copy.has-video .btn-link:hover { color: var(--terra-l); border-color: var(--terra-l); }
+    .hero-copy.has-video .hero-stats { border-top-color: transparent; }
+    .hero-copy.has-video .stat-n { color: var(--white); }
+    .hero-copy.has-video .stat-l { color: rgba(255,255,255,0.55); }
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 22px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 1.5px; background: var(--terra); flex-shrink: 0;
+    }
+    .hero-copy h1 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+      font-weight: 600; line-height: 1.04;
+      color: var(--char); margin-bottom: 26px;
+      letter-spacing: -0.015em;
+    }
+    .hero-copy h1 em { font-style: italic; color: var(--terra); }
+    .hero-desc {
+      font-size: 1rem; line-height: 1.8;
+      color: var(--gray); max-width: 420px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .btn-fill {
+      background: var(--terra); color: var(--white);
+      padding: 13px 26px; border-radius: 8px;
+      font-weight: 500; font-size: 0.88rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.18s, transform 0.15s;
+    }
+    .btn-fill:hover { background: var(--terra-d); transform: translateY(-1px); }
+    .btn-link {
+      font-size: 0.88rem; font-weight: 500; color: var(--char-m);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+      border-bottom: 1px solid var(--cream-d); padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .btn-link:hover { color: var(--terra); border-color: var(--terra); }
+    .hero-stats {
+      display: flex; gap: 40px;
+      margin-top: 60px; padding-top: 40px;
+      border-top: 1px solid var(--cream-d);
+    }
+    .stat-n {
+      font-family: 'Cormorant', serif;
+      font-size: 2.6rem; font-weight: 600; line-height: 1;
+      color: var(--char);
+    }
+    .stat-l { font-size: 0.75rem; color: var(--gray); margin-top: 5px; }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative; overflow: hidden;
+      background: linear-gradient(150deg, #C4743A 0%, #9E4A1E 40%, #6E2A0A 80%, #3D1305 100%);
+    }
+    .hero-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(255,180,80,0.12) 0%, transparent 65%);
+    }
+    .hero-car-wrap {
+      position: absolute; bottom: 22%; left: 50%;
+      transform: translateX(-50%); width: 84%; max-width: 500px; z-index: 2;
+      transition: transform 0.42s cubic-bezier(.4,.0,.2,1), opacity 0.32s;
+    }
+    .hero-car-wrap svg { width: 100%; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.4)); }
+    .hero-car-wrap.has-photo { width: 92%; max-width: 620px; bottom: 14%; }
+    .hero-car-photo {
+      width: 100%; aspect-ratio: 16/10; object-fit: cover;
+      border-radius: 16px; display: block;
+      box-shadow: 0 28px 64px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-car-wrap.slide-out-l { transform: translateX(-180%); opacity: 0; }
+    .hero-car-wrap.slide-out-r { transform: translateX(80%); opacity: 0; }
+    .hero-car-wrap.slide-in-l  { transform: translateX(-180%); opacity: 0; transition: none; }
+    .hero-car-wrap.slide-in-r  { transform: translateX(80%); opacity: 0; transition: none; }
+
+    .show-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: rgba(20,16,13,0.45); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: rgba(255,255,255,0.85);
+      transition: background 0.18s, transform 0.18s;
+    }
+    .show-arrow:hover { background: rgba(196,96,42,0.85); transform: translateY(-50%) scale(1.07); border-color: transparent; color: var(--white); }
+    .show-arrow.left  { left: 20px; }
+    .show-arrow.right { right: 20px; }
+    .show-arrow svg { width: 22px; height: 22px; }
+
+    .show-counter {
+      position: absolute; top: 22px; left: 50%; transform: translateX(-50%); z-index: 4;
+      font-family: 'Cormorant', serif; font-size: 0.95rem; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 8px;
+    }
+    .show-counter .cur { color: var(--white); font-size: 1.4rem; font-weight: 600; }
+    .show-counter .sep { color: rgba(255,255,255,0.25); }
+
+    .show-dots {
+      position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 4;
+      display: flex; gap: 6px; max-width: 60%; flex-wrap: wrap; justify-content: center;
+    }
+    .show-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.22); cursor: pointer;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .show-dot:hover { background: rgba(255,255,255,0.5); }
+    .show-dot.on { background: var(--terra-l); transform: scale(1.5); }
+    .visual-label {
+      position: absolute; bottom: 22px; left: 24px; z-index: 3;
+      font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .feat-card {
+      position: absolute; left: 24px; bottom: 60px; z-index: 4;
+      background: rgba(20,16,13,0.55);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 16px 20px;
+      max-width: calc(100% - 48px);
+      text-decoration: none; color: var(--white);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .feat-card:hover { background: rgba(20,16,13,0.7); transform: translateY(-2px); }
+    .feat-card .feat-tag {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--terra-l); margin-bottom: 6px;
+    }
+    .feat-card .feat-name {
+      font-family: 'Cormorant', serif; font-size: 1.35rem; font-weight: 600;
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .feat-card .feat-row {
+      display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    }
+    .feat-card .feat-price {
+      font-family: 'Cormorant', serif; font-size: 1.5rem; font-weight: 600;
+      color: var(--white);
+    }
+    .feat-card .feat-meta { font-size: 0.74rem; color: rgba(255,255,255,0.55); }
+    .scroll-ind {
+      position: absolute; bottom: 24px; right: 24px; z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      color: rgba(255,255,255,0.25); font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:0.25} 50%{opacity:0.65} }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--char); padding: 13px 0;
+      overflow: hidden; white-space: nowrap; user-select: none;
+    }
+    .ticker-track {
+      display: inline-flex; gap: 0;
+      animation: tick 32s linear infinite;
+    }
+    .ticker-track span {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      padding: 0 32px; display: inline-flex; align-items: center; gap: 32px;
+    }
+    .ticker-track span::after { content: '·'; color: var(--terra-l); }
+    @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ── SEARCH ── */
+    .search-wrap { padding: 44px 6vw; border-bottom: 1px solid var(--cream-d); }
+    .search-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 14px;
+    }
+    .search-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; }
+    .search-row select,
+    .search-row input {
+      flex: 1; min-width: 130px;
+      background: var(--white); border: 1.5px solid var(--cream-d);
+      padding: 11px 14px; border-radius: 8px;
+      font-size: 0.84rem; color: var(--char);
+      font-family: 'DM Sans', sans-serif;
+      appearance: none; outline: none;
+      transition: border-color 0.18s;
+    }
+    .search-row select:focus, .search-row input:focus { border-color: var(--terra); }
+    .search-row input::placeholder { color: var(--gray); }
+    .search-btn {
+      background: var(--terra); color: var(--white);
+      border: none; padding: 11px 26px; border-radius: 8px;
+      font-size: 0.84rem; font-weight: 500; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; white-space: nowrap;
+      transition: background 0.18s;
+    }
+    .search-btn:hover { background: var(--terra-d); }
+
+    /* ── INVENTORY ── */
+    .inv-section { padding: 72px 6vw; }
+    .sec-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; }
+    .sec-ey {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--terra); margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem); font-weight: 600; line-height: 1.1;
+    }
+    .sec-all {
+      font-size: 0.8rem; font-weight: 500; color: var(--gray);
+      text-decoration: none; display: flex; align-items: center; gap: 4px;
+      padding-bottom: 1px; border-bottom: 1px solid transparent;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .sec-all:hover { color: var(--terra); border-color: var(--terra); }
+
+    .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; }
+    .pill {
+      padding: 6px 16px; border-radius: 20px; font-size: 0.79rem; font-weight: 500;
+      cursor: pointer; border: 1.5px solid var(--cream-d);
+      background: var(--white); color: var(--gray);
+      transition: all 0.16s; font-family: 'DM Sans', sans-serif;
+    }
+    .pill:hover, .pill.on { background: var(--terra); border-color: var(--terra); color: var(--white); }
+
+    /* ── HOT DEALS ROW ── */
+    .hot-section { padding: 56px 6vw 0; }
+    .hot-row {
+      display: flex; gap: 18px;
+      overflow-x: auto; padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+    .hot-row::-webkit-scrollbar { display: none; }
+    .hot-row .car-card { flex: 0 0 280px; }
+
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+      gap: 20px;
+    }
+    .car-card {
+      background: var(--white); border-radius: 12px;
+      overflow: hidden; border: 1px solid var(--cream-d);
+      transition: box-shadow 0.22s, transform 0.22s; cursor: pointer;
+    }
+    .car-card:hover { box-shadow: 0 10px 40px rgba(30,26,23,0.1); transform: translateY(-2px); }
+    .card-img {
+      position: relative; width: 100%; aspect-ratio: 3/2; overflow: hidden;
+    }
+    .card-ph {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px;
+    }
+    .card-photo {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .5s cubic-bezier(.2,.7,.2,1);
+    }
+    .car-card:hover .card-photo { transform: scale(1.04); }
+    .card-ph .color-note {
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .card-badge {
+      position: absolute; top: 11px; left: 11px;
+      font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 4px 9px; border-radius: 5px;
+      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.16); color: rgba(255,255,255,0.88);
+    }
+    .card-badge.hot { background: rgba(196,96,42,0.88); color: var(--white); border-color: transparent; }
+    .card-body { padding: 17px 18px 19px; }
+    .card-sub { font-size: 0.73rem; color: var(--gray); margin-bottom: 3px; }
+    .card-name {
+      font-family: 'Cormorant', serif;
+      font-size: 1.22rem; font-weight: 600; line-height: 1.15;
+      color: var(--char); margin-bottom: 11px;
+    }
+    .card-specs { display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+    .card-spec { font-size: 0.74rem; color: var(--gray); display: flex; align-items: center; gap: 4px; }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; }
+    .card-price {
+      font-family: 'Cormorant', serif;
+      font-size: 1.48rem; font-weight: 600; line-height: 1;
+    }
+    .card-price sub { font-size: 0.62rem; font-family: 'DM Sans', sans-serif; color: var(--gray); font-weight: 400; }
+    .card-btn {
+      font-size: 0.76rem; font-weight: 500; color: var(--terra);
+      background: none; border: 1.5px solid var(--cream-d);
+      padding: 7px 14px; border-radius: 6px; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.16s;
+    }
+    .card-btn:hover { background: var(--terra); color: var(--white); border-color: var(--terra); }
+
+    /* ── TRUST ── */
+    .trust-section { padding: 80px 6vw; background: var(--cream-m); }
+    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .trust-copy .sec-title { margin-bottom: 16px; }
+    .trust-copy p { font-size: 0.93rem; color: var(--gray); line-height: 1.85; max-width: 420px; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+    .pillar {
+      background: var(--white); border: 1px solid var(--cream-d);
+      border-radius: 10px; padding: 18px 20px;
+    }
+    .pillar-n {
+      font-family: 'Cormorant', serif;
+      font-size: 2.2rem; font-weight: 600; line-height: 1;
+      color: var(--terra); margin-bottom: 4px;
+    }
+    .pillar-l { font-size: 0.78rem; color: var(--gray); line-height: 1.45; }
+    .reviews { display: flex; flex-direction: column; gap: 14px; }
+    .review {
+      background: var(--white); border: 1px solid var(--cream-d);
+      border-radius: 10px; padding: 20px 22px;
+    }
+    .review-stars { color: var(--terra); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 9px; }
+    .review-text { font-size: 0.87rem; color: var(--char-m); line-height: 1.72; margin-bottom: 12px; }
+    .review-by {
+      font-size: 0.74rem; color: var(--gray);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .review-by::before { content: ''; display: block; width: 18px; height: 1px; background: var(--cream-d); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--char); padding: 72px 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .cta-band h2 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.9rem, 3.2vw, 3rem); font-weight: 600; line-height: 1.1;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .cta-band h2 em { font-style: italic; color: var(--terra-l); }
+    .cta-band p { font-size: 0.88rem; color: rgba(255,255,255,0.38); }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white); color: var(--char);
+      padding: 13px 26px; border-radius: 8px;
+      font-weight: 500; font-size: 0.88rem; text-decoration: none;
+      font-family: 'DM Sans', sans-serif; transition: background 0.18s;
+    }
+    .btn-white:hover { background: var(--cream); }
+    .btn-outline-terra {
+      background: transparent; color: var(--terra-l);
+      border: 1.5px solid rgba(196,96,42,0.4);
+      padding: 13px 26px; border-radius: 8px;
+      font-weight: 500; font-size: 0.88rem; text-decoration: none;
+      font-family: 'DM Sans', sans-serif; transition: all 0.18s;
+    }
+    .btn-outline-terra:hover { background: var(--terra); color: var(--white); border-color: var(--terra); }
+
+    /* ── FOOTER ── */
+    footer { background: #14100D; padding: 56px 6vw 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 44px; }
+    .footer-brand .wordmark { color: rgba(255,255,255,0.6); margin-bottom: 14px; display: inline-block; }
+    .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.28); line-height: 1.82; max-width: 260px; }
+    .foot-col h5 {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em;
+      text-transform: uppercase; color: rgba(255,255,255,0.22); margin-bottom: 17px;
+    }
+    .foot-col a {
+      display: block; font-size: 0.82rem; color: rgba(255,255,255,0.42);
+      text-decoration: none; margin-bottom: 10px; transition: color 0.16s;
+    }
+    .foot-col a:hover { color: rgba(255,255,255,0.75); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 22px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { font-size: 0.74rem; color: rgba(255,255,255,0.18); }
+
+    /* ── PROCESS / HOW IT WORKS ── */
+    .process-section {
+      padding: 90px 6vw; background: var(--cream); border-top: 1px solid var(--cream-d);
+    }
+    .process-head { max-width: 720px; margin-bottom: 50px; }
+    .process-head .sec-ey { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+    .process-head h2 { font-family: 'Cormorant', serif; font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 600; line-height: 1.08; }
+    .process-head h2 em { font-style: italic; color: var(--terra); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .process-step {
+      background: var(--white); border: 1px solid var(--cream-d);
+      border-radius: 12px; padding: 28px 24px;
+      transition: transform 0.25s cubic-bezier(.2,.7,.2,1), box-shadow 0.25s;
+    }
+    .process-step:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(30,26,23,0.07); }
+    .process-num {
+      font-family: 'Cormorant', serif; font-size: 2.2rem; font-weight: 600;
+      color: var(--terra); line-height: 1; margin-bottom: 16px;
+      font-style: italic;
+    }
+    .process-step h3 {
+      font-family: 'Cormorant', serif; font-size: 1.35rem; font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .process-step p { font-size: 0.86rem; color: var(--gray); line-height: 1.7; }
+
+    /* ── TRADE-IN ── */
+    .trade-section {
+      padding: 90px 6vw;
+      background: linear-gradient(150deg, #2A2421 0%, #1E1A17 100%);
+      position: relative; overflow: hidden;
+    }
+    .trade-section::before {
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,96,42,0.18) 0%, transparent 70%);
+    }
+    .trade-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px;
+      max-width: 1200px; margin: 0 auto; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .trade-copy .sec-ey { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra-l); margin-bottom: 14px; }
+    .trade-copy h2 {
+      font-family: 'Cormorant', serif; font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 600; line-height: 1.05; color: var(--white); margin-bottom: 22px;
+    }
+    .trade-copy h2 em { font-style: italic; color: var(--terra-l); }
+    .trade-copy p { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 460px; margin-bottom: 30px; }
+    .trade-points { list-style: none; padding: 0; margin-bottom: 36px; }
+    .trade-points li {
+      font-size: 0.92rem; color: rgba(255,255,255,0.78);
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .trade-points li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--terra-l); flex-shrink: 0;
+    }
+    .trade-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(8px);
+      border-radius: 16px; padding: 32px;
+    }
+    .trade-form h3 {
+      font-family: 'Cormorant', serif; font-size: 1.5rem; color: var(--white); margin-bottom: 6px;
+    }
+    .trade-form .trade-sub { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 22px; }
+    .trade-form .trade-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    .trade-form input, .trade-form textarea {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      padding: 11px 14px; border-radius: 8px;
+      font-size: 0.86rem; color: var(--white); font-family: 'DM Sans', sans-serif;
+      outline: none; transition: border-color 0.18s, background 0.18s;
+    }
+    .trade-form input::placeholder, .trade-form textarea::placeholder { color: rgba(255,255,255,0.32); }
+    .trade-form input:focus, .trade-form textarea:focus { border-color: var(--terra-l); background: rgba(255,255,255,0.07); }
+    .trade-form textarea { min-height: 70px; margin-bottom: 14px; resize: vertical; }
+    .trade-form button {
+      width: 100%; padding: 13px; background: var(--terra); color: var(--white);
+      border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: background 0.18s;
+    }
+    .trade-form button:hover { background: var(--terra-d); }
+    .trade-note { font-size: 0.74rem; color: rgba(255,255,255,0.32); margin-top: 12px; text-align: center; }
+
+    /* ── LOCATION ── */
+    .location-section { padding: 90px 6vw; background: var(--cream-m); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1200px; margin: 0 auto; align-items: center; }
+    .location-copy h2 { font-family: 'Cormorant', serif; font-size: clamp(2rem, 3.2vw, 2.8rem); font-weight: 600; line-height: 1.1; margin-bottom: 18px; }
+    .location-copy h2 em { font-style: italic; color: var(--terra); }
+    .location-copy .sec-ey { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+    .location-list { list-style: none; padding: 0; margin: 22px 0 28px; }
+    .location-list li {
+      display: flex; gap: 14px; padding: 14px 0;
+      border-bottom: 1px solid var(--cream-d); align-items: flex-start;
+    }
+    .location-list li svg { flex-shrink: 0; margin-top: 2px; color: var(--terra); }
+    .location-list li strong { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 2px; }
+    .location-list li span { font-size: 0.84rem; color: var(--gray); line-height: 1.6; }
+    .location-list li a { color: var(--char-m); text-decoration: none; border-bottom: 1px solid var(--cream-d); transition: color 0.16s, border-color 0.16s; }
+    .location-list li a:hover { color: var(--terra); border-color: var(--terra); }
+    .location-map {
+      width: 100%; aspect-ratio: 4/3; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--cream-d); background: var(--cream);
+      box-shadow: 0 18px 48px rgba(30,26,23,0.06);
+    }
+    .location-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.25) contrast(0.95); }
+
+    /* ── STICKY MOBILE BAR ── */
+    .mob-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      display: none; align-items: stretch;
+      background: var(--char); border-top: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.18);
+    }
+    .mob-bar a {
+      flex: 1; padding: 14px; text-align: center;
+      color: var(--white); text-decoration: none;
+      font-size: 0.84rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .mob-bar a + a { border-left: 1px solid rgba(255,255,255,0.08); }
+    .mob-bar a.terra { background: var(--terra); }
+    .mob-bar a svg { width: 16px; height: 16px; }
+
+    /* ── ENTRANCE ANIMATIONS ── */
+    .hero-copy .eyebrow,
+    .hero-copy h1 .word,
+    .hero-copy .hero-desc,
+    .hero-copy .hero-btns,
+    .hero-copy .hero-stats > * {
+      opacity: 0; transform: translateY(18px);
+      animation: heroIn 0.85s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+    .hero-copy .eyebrow            { animation-delay: 0.10s; }
+    .hero-copy h1 .word            { animation-delay: calc(0.25s + var(--wi, 0) * 0.10s); }
+    .hero-copy .hero-desc          { animation-delay: 0.85s; }
+    .hero-copy .hero-btns          { animation-delay: 1.00s; }
+    .hero-copy .hero-stats > *:nth-child(1) { animation-delay: 1.18s; }
+    .hero-copy .hero-stats > *:nth-child(2) { animation-delay: 1.28s; }
+    .hero-copy .hero-stats > *:nth-child(3) { animation-delay: 1.38s; }
+    @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+    .hero-copy h1 .word { display: inline-block; }
+
+    /* Scroll-triggered reveals */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-stagger > * {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(.2,.7,.2,1), transform 0.6s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal-stagger.in > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(5) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(6) { transition-delay: 0.55s; opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-copy .eyebrow, .hero-copy h1 .word, .hero-copy .hero-desc, .hero-copy .hero-btns, .hero-copy .hero-stats > *,
+      .reveal, .reveal-stagger > * {
+        opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important;
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { height: 340px; order: -1; }
+      .trust-grid { grid-template-columns: 1fr; gap: 44px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 900px) {
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .trade-grid { grid-template-columns: 1fr; gap: 40px; }
+      .location-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 640px) {
+      .nav-right a:not(.nav-cta) { display: none; }
+      .nav-mob-btn { display: flex; }
+      .hero-copy { padding: 48px 6vw; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .cta-band { text-align: center; justify-content: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .trade-form .trade-row { grid-template-columns: 1fr; }
+      .mob-bar { display: flex; }
+      body { padding-bottom: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="wordmark" data-cfg="dealerName">Gardena Motors</a>
+  <div class="nav-right" id="nav-right">
+    <a href="inventory.html">Inventory</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#trade-in">Trade-in</a>
+    <a href="#visit">Visit</a>
+    <a href="tel:+13105550000" class="nav-cta" data-cfg-href="phoneTel">Call Us</a>
+  </div>
+  <button class="nav-mob-btn" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy" id="hero-copy">
+    <video class="hero-bg-video" id="hero-bg-video" autoplay muted loop playsinline preload="metadata"></video>
+    <p class="eyebrow" data-cfg="heroEyebrow">Gardena, California · South Bay LA</p>
+    <h1 data-cfg-html="heroTagline">Pre-Owned,<br><em>Properly</em><br>Sourced.</h1>
+    <p class="hero-desc" data-cfg="heroDesc">No nonsense, no hidden fees. Quality used cars hand-selected for the people who live and drive in Los Angeles.</p>
+    <div class="hero-btns">
+      <a href="#inventory" class="btn-fill">
+        Browse the Lot
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#about" class="btn-link">How it works →</a>
+    </div>
+    <div class="hero-stats" id="cfg-stats">
+      <div><div class="stat-n">30+</div><div class="stat-l">Cars in stock</div></div>
+      <div><div class="stat-n">5★</div><div class="stat-l">Google rating</div></div>
+      <div><div class="stat-n">7</div><div class="stat-l">Day return policy</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual" id="hero-visual">
+    <div class="show-counter">
+      <span class="cur" id="show-cur">1</span>
+      <span class="sep">/</span>
+      <span id="show-tot">—</span>
+    </div>
+    <button class="show-arrow left"  id="show-prev" aria-label="Previous car">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="show-arrow right" id="show-next" aria-label="Next car">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="hero-car-wrap" id="hero-car"></div>
+    <a class="feat-card" id="feat-card" href="#" style="display:none">
+      <div class="feat-tag" id="feat-tag">Featured</div>
+      <div class="feat-name" id="feat-name">—</div>
+      <div class="feat-row">
+        <div class="feat-price" id="feat-price">—</div>
+        <div class="feat-meta" id="feat-meta">—</div>
+      </div>
+    </a>
+    <div class="show-dots" id="show-dots"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Quality Pre-Owned</span><span>Gardena CA</span><span>Inspected</span>
+    <span>Transparent Pricing</span><span>Trade-Ins Welcome</span><span>South Bay LA</span>
+    <span>7-Day Returns</span><span>No Hidden Fees</span><span>Test Drives Available</span>
+    <span>Quality Pre-Owned</span><span>Gardena CA</span><span>Inspected</span>
+    <span>Transparent Pricing</span><span>Trade-Ins Welcome</span><span>South Bay LA</span>
+    <span>7-Day Returns</span><span>No Hidden Fees</span><span>Test Drives Available</span>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <p class="search-label">Filter the lot</p>
+  <div class="search-row">
+    <select id="f-make">
+      <option value="">All Makes</option>
+      <option>Toyota</option><option>Honda</option><option>BMW</option>
+      <option>Mercedes-Benz</option><option>Ford</option><option>Chevrolet</option>
+      <option>Lexus</option><option>Nissan</option><option>Hyundai</option><option>Jeep</option>
+    </select>
+    <select id="f-type">
+      <option value="">All Types</option>
+      <option value="sedan">Sedans</option>
+      <option value="suv">SUVs</option>
+      <option value="truck">Trucks</option>
+      <option value="coupe">Coupes</option>
+    </select>
+    <select id="f-price">
+      <option value="">Any Price</option>
+      <option value="12000">Under $12,000</option>
+      <option value="15000">Under $15,000</option>
+      <option value="20000">Under $20,000</option>
+      <option value="30000">Under $30,000</option>
+      <option value="40000">Under $40,000</option>
+    </select>
+    <select id="f-year">
+      <option value="">Any Year</option>
+      <option value="2022">2022+</option>
+      <option value="2020">2020+</option>
+      <option value="2018">2018+</option>
+      <option value="2015">2015+</option>
+    </select>
+    <input type="text" id="f-q" placeholder="Make, model, keyword…" onkeydown="if(event.key==='Enter')doFilter()" />
+    <button class="search-btn" onclick="doFilter()">Search</button>
+  </div>
+</div>
+
+<!-- HOT DEALS -->
+<section class="hot-section" id="hot-deals">
+  <div class="sec-head" style="margin-bottom:18px">
+    <div>
+      <p class="sec-ey">Featured</p>
+      <h2 class="sec-title">Hot Deals</h2>
+    </div>
+  </div>
+  <div class="hot-row" id="hot-row"></div>
+</section>
+
+<!-- INVENTORY -->
+<section class="inv-section" id="inventory">
+  <div class="sec-head">
+    <div>
+      <p class="sec-ey">On the Lot</p>
+      <h2 class="sec-title">Current Inventory</h2>
+    </div>
+    <a href="inventory.html" class="sec-all">View all 30+ →</a>
+  </div>
+  <div class="pills">
+    <button class="pill on" onclick="setPill('all',this)">All</button>
+    <button class="pill" onclick="setPill('sedan',this)">Sedans</button>
+    <button class="pill" onclick="setPill('suv',this)">SUVs</button>
+    <button class="pill" onclick="setPill('truck',this)">Trucks</button>
+    <button class="pill" onclick="setPill('coupe',this)">Coupes</button>
+    <button class="pill" onclick="setPill('under15',this)">Under $15k</button>
+  </div>
+  <div class="car-grid" id="grid"></div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section" id="about">
+  <div class="trust-grid">
+    <div class="trust-copy reveal">
+      <p class="sec-ey">Why <span data-cfg="dealerName">Gardena Motors</span></p>
+      <h2 class="sec-title">We keep it<br><em style="font-style:italic;color:var(--terra)">honest.</em></h2>
+      <p data-cfg="trustParagraph">We're a small dealer doing things right. Every car gets inspected, every price is the price, and we're not trying to rush you into anything. We want you to leave happy and send your friends.</p>
+      <div class="pillars reveal-stagger" id="cfg-pillars">
+        <div class="pillar"><div class="pillar-n">30+</div><div class="pillar-l">Vehicles in stock</div></div>
+        <div class="pillar"><div class="pillar-n">5★</div><div class="pillar-l">Google rating</div></div>
+        <div class="pillar"><div class="pillar-n">7</div><div class="pillar-l">Day return window</div></div>
+        <div class="pillar"><div class="pillar-n">$0</div><div class="pillar-l">Hidden fees</div></div>
+      </div>
+    </div>
+    <div class="reviews reveal-stagger" id="cfg-reviews">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Found the car I'd been looking for at a price I could actually work with. No back-and-forth, no upsells. Straightforward from start to finish."</p>
+        <p class="review-by">Marcus T. · Compton, CA</p>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was skeptical of used car lots after a bad experience elsewhere, but these guys were different. Walked me through everything and I drove off the same day."</p>
+        <p class="review-by">Jasmine R. · Hawthorne, CA</p>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Traded in my old Accord and got more than I expected. Clean inventory, no pressure, just good vibes. Will definitely be back."</p>
+        <p class="review-by">Deon W. · Carson, CA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS / HOW IT WORKS -->
+<section class="process-section" id="how-it-works">
+  <div class="process-head reveal">
+    <p class="sec-ey">How it works</p>
+    <h2>Buying a car shouldn't<br>be a <em>fight.</em></h2>
+  </div>
+  <div class="process-grid reveal-stagger">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <h3>Browse online</h3>
+      <p>Every car in our lot is on the site, with real prices and real specs. No mystery, no upsell ladder.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <h3>Come test drive</h3>
+      <p>Drop by Gardena seven days a week. We'll have the car ready, gassed, and the paperwork pre-staged.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <h3>Drive it home</h3>
+      <p>Pay how you want, finance through your bank or ours. Plates, registration, tax, all handled in-house.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <h3>7-day return</h3>
+      <p>Not in love? Bring it back within seven days, no questions, no restocking fee. We mean it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE-IN -->
+<section class="trade-section" id="trade-in">
+  <div class="trade-grid">
+    <div class="trade-copy reveal">
+      <p class="sec-ey">Trade-in &amp; consignment</p>
+      <h2>Bring us the car<br>you're <em>done with.</em></h2>
+      <p>We pay competitive prices on clean trades and consign higher-end vehicles for owners who want top dollar without the hassle of selling private-party.</p>
+      <ul class="trade-points">
+        <li>Same-day quote, in writing, no obligation</li>
+        <li>Pay-off your existing loan directly</li>
+        <li>Roll trade equity straight into your next car</li>
+        <li>Consignment option for $25k+ vehicles</li>
+      </ul>
+    </div>
+    <form class="trade-form reveal" onsubmit="submitTradeIn(event)">
+      <h3>Get a quick quote</h3>
+      <p class="trade-sub">Tell us about your car. We'll come back with a number within the day.</p>
+      <div class="trade-row">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="tel" name="phone" placeholder="Phone or email" required />
+      </div>
+      <div class="trade-row">
+        <input type="text" name="ymm" placeholder="Year / make / model" required />
+        <input type="text" name="miles" placeholder="Mileage" />
+      </div>
+      <textarea name="notes" placeholder="Anything we should know? (condition, accidents, mods, payoff)"></textarea>
+      <button type="submit">Get my quote</button>
+      <p class="trade-note">No spam. We'll only contact you about your car.</p>
+    </form>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="visit">
+  <div class="location-grid">
+    <div class="location-copy reveal">
+      <p class="sec-ey">Visit us</p>
+      <h2>Open seven days,<br>right off the <em>110.</em></h2>
+      <ul class="location-list">
+        <li>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div>
+            <strong data-cfg="address">1234 W Rosecrans Ave</strong>
+            <span><span data-cfg="cityFull">Gardena, CA 90249</span> · <a href="https://maps.google.com/?q=1234+W+Rosecrans+Ave+Gardena+CA" target="_blank" rel="noopener">Get directions</a></span>
+          </div>
+        </li>
+        <li>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div>
+            <strong>Open seven days</strong>
+            <span data-cfg="hours">9am to 7pm · Mon through Sun</span>
+          </div>
+        </li>
+        <li>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <div>
+            <strong>Call or text anytime</strong>
+            <span><a href="tel:+13105550000" data-cfg-href="phoneTel" data-cfg="phone">(310) 555-0000</a></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="location-map reveal">
+      <iframe loading="lazy" src="https://www.google.com/maps?q=1234+W+Rosecrans+Ave+Gardena+CA&output=embed" title="Gardena Motors location"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <div>
+    <h2 data-cfg-html="ctaHeading">Come see us<br>in <em>Gardena.</em></h2>
+    <p data-cfg="ctaSubtext">Open 7 days · 9am to 7pm · 1234 W Rosecrans Ave, Gardena CA</p>
+  </div>
+  <div class="cta-actions">
+    <a href="tel:+13105550000" class="btn-white" data-cfg-href="phoneTel">Call <span data-cfg="phone">(310) 555-0000</span></a>
+    <a href="sms:+13105550000" class="btn-outline-terra" data-cfg-href="phoneSms">Text Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="wordmark" data-cfg="dealerName">Gardena Motors</a>
+      <p data-cfg="footerTagline">Quality pre-owned vehicles in Gardena, CA. Serving the South Bay and greater Los Angeles.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Inventory</h5>
+      <a href="inventory.html?type=sedan">Sedans</a>
+      <a href="inventory.html?type=suv">SUVs</a>
+      <a href="inventory.html?type=truck">Trucks</a>
+      <a href="inventory.html?type=coupe">Coupes</a>
+      <a href="inventory.html">All vehicles</a>
+    </div>
+    <div class="foot-col">
+      <h5>Dealership</h5>
+      <a href="#about">About us</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#trade-in">Trade-in</a>
+      <a href="#visit">Visit &amp; directions</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h5>Visit</h5>
+      <a href="https://maps.google.com/?q=1234+W+Rosecrans+Ave+Gardena+CA" target="_blank" rel="noopener" data-cfg="address">1234 W Rosecrans Ave</a>
+      <a href="https://maps.google.com/?q=1234+W+Rosecrans+Ave+Gardena+CA" target="_blank" rel="noopener" data-cfg="cityFull">Gardena, CA 90249</a>
+      <a href="tel:+13105550000" data-cfg-href="phoneTel" data-cfg="phone">(310) 555-0000</a>
+      <a href="sms:+13105550000" data-cfg-href="phoneSms">Text us</a>
+      <a href="#" data-cfg="hours">Open 7 days · 9am to 7pm</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p id="cfg-copyright">© 2026 Gardena Motors. All rights reserved.</p>
+    <p>Licensed California dealer · DMV #00000000</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="mob-bar" aria-label="Quick contact">
+  <a href="tel:+13105550000" class="terra" data-cfg-href="phoneTel">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+    Call us
+  </a>
+  <a href="sms:+13105550000" data-cfg-href="phoneSms">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+    Text us
+  </a>
+  <a href="#trade-in">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7l4-4m0 0l4 4m-4-4v18"/></svg>
+    Trade-in
+  </a>
+</div>
+
+<script src="shared.js"></script>
+<script>
+/* ── CONFIG + INVENTORY ── */
+let CARS = [];
+Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
+  .then(([cfg, data]) => {
+    CARS = data;
+    const cp = document.getElementById('cfg-copyright');
+    if (cp && cfg) cp.textContent = `© ${cfg.year} ${cfg.dealerName}. All rights reserved.`;
+    setupHeroVideo(cfg);
+    renderHeroFeatured();
+    document.getElementById('hot-row').innerHTML = CARS.filter(c=>c.hot).map(c=>mkCard(c)).join('');
+    render(CARS.slice(0, 12));
+  });
+
+function setupHeroVideo(cfg) {
+  const v   = document.getElementById('hero-bg-video');
+  const wrap = document.getElementById('hero-copy');
+  if (!v || !cfg) return;
+  if (cfg.heroPoster) v.poster = cfg.heroPoster;
+  if (!cfg.heroVideo) return;
+  wrap.classList.add('has-video');
+  v.src = cfg.heroVideo;
+  const reveal = () => v.classList.add('ready');
+  v.addEventListener('loadeddata',  reveal, { once: true });
+  v.addEventListener('canplay',     reveal, { once: true });
+  v.addEventListener('playing',     reveal, { once: true });
+  v.addEventListener('error', () => { wrap.classList.remove('has-video'); v.remove(); }, { once: true });
+  v.play().catch(() => {});
+  // Failsafe: if events don't fire within 2s but the video has loaded, reveal anyway.
+  setTimeout(() => { if (v.readyState >= 2) v.classList.add('ready'); }, 2000);
+}
+
+/* ── SHOWROOM (NFS-style car switcher) ── */
+let SHOW = [];
+let showIdx = 0;
+let showAnimating = false;
+
+function buildShowroom() {
+  const hots = CARS.filter(c => c.hot);
+  const rest = CARS.filter(c => !c.hot);
+  SHOW = [...hots, ...rest];
+  document.getElementById('show-tot').textContent = SHOW.length;
+  const dots = document.getElementById('show-dots');
+  dots.innerHTML = SHOW.map((_, i) => `<span class="show-dot" data-i="${i}"></span>`).join('');
+  dots.querySelectorAll('.show-dot').forEach(d => {
+    d.addEventListener('click', () => goShow(+d.dataset.i, +d.dataset.i > showIdx ? 1 : -1));
+  });
+  document.getElementById('show-prev').addEventListener('click', () => goShow(showIdx - 1, -1));
+  document.getElementById('show-next').addEventListener('click', () => goShow(showIdx + 1, +1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  goShow(showIdx - 1, -1);
+    if (e.key === 'ArrowRight') goShow(showIdx + 1, +1);
+  });
+  paintShow(showIdx);
+}
+
+function paintShow(i) {
+  const c = SHOW[i]; if (!c) return;
+  const grad = (c.g && c.g.length === 2) ? c.g : ['#9EA5AD','#6A7078'];
+  const ph = carPhotos(c);
+  const wrap = document.getElementById('hero-car');
+  if (ph.length) {
+    wrap.classList.add('has-photo');
+    wrap.innerHTML = `<img class="hero-car-photo" src="${ph[0]}" alt="${c.year} ${c.make} ${c.model}" />`;
+  } else {
+    wrap.classList.remove('has-photo');
+    wrap.innerHTML = getCarSVG(c.type || 'sedan', grad, 500);
+  }
+  const card = document.getElementById('feat-card');
+  card.style.display = '';
+  card.href = `car.html?id=${c.id}`;
+  document.getElementById('feat-tag').textContent = c.hot ? 'Hot Deal · Featured' : 'Featured';
+  document.getElementById('feat-name').textContent = `${c.year} ${c.make} ${c.model}`;
+  document.getElementById('feat-price').textContent = fmt(c.price);
+  const bits = [];
+  if (c.miles) bits.push(`${c.miles} mi`);
+  if (c.trans) bits.push(c.trans);
+  if (c.color) bits.push(c.color);
+  document.getElementById('feat-meta').textContent = bits.join(' · ');
+  document.getElementById('show-cur').textContent = i + 1;
+  document.querySelectorAll('.show-dot').forEach((d, di) => d.classList.toggle('on', di === i));
+}
+
+function goShow(next, dir) {
+  if (showAnimating || !SHOW.length) return;
+  next = (next + SHOW.length) % SHOW.length;
+  if (next === showIdx) return;
+  showAnimating = true;
+  const wrap = document.getElementById('hero-car');
+  wrap.classList.add(dir > 0 ? 'slide-out-l' : 'slide-out-r');
+  setTimeout(() => {
+    showIdx = next;
+    paintShow(showIdx);
+    wrap.classList.remove('slide-out-l', 'slide-out-r');
+    wrap.classList.add(dir > 0 ? 'slide-in-r' : 'slide-in-l');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        wrap.classList.remove('slide-in-l', 'slide-in-r');
+        setTimeout(() => { showAnimating = false; }, 420);
+      });
+    });
+  }, 320);
+}
+
+function renderHeroFeatured() {
+  if (!CARS.length) {
+    document.getElementById('hero-car').innerHTML =
+      getCarSVG('sedan', ['rgba(255,255,255,0.22)','rgba(255,255,255,0.07)'], 500);
+    return;
+  }
+  buildShowroom();
+}
+
+function render(list) {
+  const el = document.getElementById('grid');
+  el.innerHTML = list.length
+    ? list.map(mkCard).join('')
+    : '<p style="color:var(--gray);grid-column:1/-1;padding:40px 0;font-size:.9rem">No cars match your search.</p>';
+}
+
+/* ── FILTER LOGIC ── */
+let activeType = 'all';
+
+function setPill(type, btn) {
+  activeType = type;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+  btn.classList.add('on');
+  doFilter();
+}
+
+function doFilter() {
+  const make  = document.getElementById('f-make').value;
+  const type  = document.getElementById('f-type').value;
+  const maxP  = parseInt(document.getElementById('f-price').value) || Infinity;
+  const minY  = parseInt(document.getElementById('f-year').value)  || 0;
+  const q     = document.getElementById('f-q').value.toLowerCase().trim();
+
+  const res = CARS.filter(c => {
+    if (activeType === 'under15' && c.price >= 15000) return false;
+    if (activeType !== 'all' && activeType !== 'under15' && c.type !== activeType) return false;
+    if (type && c.type !== type) return false;
+    if (make && c.make !== make) return false;
+    if (c.price > maxP) return false;
+    if (c.year < minY) return false;
+    if (q && !c.make.toLowerCase().includes(q) &&
+            !c.model.toLowerCase().includes(q) &&
+            !c.color.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  render(res.slice(0, 12));
+}
+
+/* ── DETAIL STUB (will become a real page) ── */
+function viewCar(id) {
+  const c = CARS.find(x => x.id === id);
+  if (!c) return;
+  window.location.href = `car.html?id=${id}`;
+}
+
+/* ── HERO HEADLINE WORD SPLIT ── */
+(function() {
+  const h1 = document.querySelector('.hero-copy h1');
+  if (!h1) return;
+  // Split top-level text + <em>/<br> children into per-word spans, preserving HTML.
+  const wrapWords = (node, idx) => {
+    const out = [];
+    node.childNodes.forEach(child => {
+      if (child.nodeType === 3) {
+        child.textContent.split(/(\s+)/).forEach(part => {
+          if (!part.trim()) { out.push(part); return; }
+          out.push(`<span class="word" style="--wi:${idx.i++}">${part}</span>`);
+        });
+      } else if (child.tagName === 'BR') {
+        out.push('<br>');
+      } else {
+        const inner = wrapWords(child, idx);
+        out.push(`<${child.tagName.toLowerCase()}>${inner}</${child.tagName.toLowerCase()}>`);
+      }
+    });
+    return out.join('');
+  };
+  const apply = () => {
+    const idx = { i: 0 };
+    h1.innerHTML = wrapWords(h1, idx);
+  };
+  apply();
+  // Re-split if config later overrides headline HTML
+  const obs = new MutationObserver(() => {
+    if (!h1.querySelector('.word')) apply();
+  });
+  obs.observe(h1, { childList: true, subtree: true, characterData: true });
+})();
+
+/* ── COUNT-UP STATS ── */
+function countUp(el, finalText) {
+  const m = String(finalText).match(/^(\d+)(.*)$/);
+  if (!m) return;
+  const target = +m[1], suffix = m[2] || '';
+  const dur = 1100, start = performance.now();
+  const tick = (now) => {
+    const t = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(target * eased) + suffix;
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+/* ── INTERSECTION OBSERVER ── */
+(function() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      // Trigger count-up on stat numbers within
+      e.target.querySelectorAll('.stat-n, .pillar-n').forEach(n => {
+        if (n.dataset.counted) return;
+        n.dataset.counted = '1';
+        const orig = n.textContent.trim();
+        if (/^\d/.test(orig)) countUp(n, orig);
+      });
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+  // Hero stats also count up immediately (they're already animating in)
+  setTimeout(() => {
+    document.querySelectorAll('.hero-stats .stat-n').forEach(n => {
+      if (n.dataset.counted) return;
+      n.dataset.counted = '1';
+      const orig = n.textContent.trim();
+      if (/^\d/.test(orig)) countUp(n, orig);
+    });
+  }, 1200);
+})();
+
+/* ── NAV SCROLL ── */
+(function() {
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ── TRADE-IN FORM ── */
+function submitTradeIn(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const orig = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  /* Simulated send — wire to Netlify Forms, Formspree, or your backend */
+  setTimeout(() => {
+    btn.textContent = 'Got it · we\'ll be in touch';
+    e.target.reset();
+    setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 3500);
+  }, 750);
+}
+
+/* ── MOBILE NAV ── */
+function toggleNav() {
+  const nr = document.getElementById('nav-right');
+  const open = nr.style.display === 'flex';
+  nr.style.display = open ? '' : 'flex';
+  if (!open) {
+    Object.assign(nr.style, {
+      flexDirection:'column', position:'absolute',
+      top:'64px', left:'0', right:'0',
+      background:'var(--cream)', borderBottom:'1px solid var(--cream-d)',
+      padding:'16px 6vw', gap:'18px', zIndex:'199'
+    });
+  }
+}
+</script>
+</body>
+</html>

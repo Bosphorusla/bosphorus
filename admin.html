@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Gardena Motors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F5EFE4; --cream-m: #EDE4D3; --cream-d: #E0D4BC;
+      --terra: #C4602A; --terra-d: #A34E21; --terra-l: #D97B46;
+      --char:  #1E1A17; --char-m: #3D3830; --gray: #8A8076;
+      --sage:  #7A9B8A; --rose: #C25E5E; --white: #FFFFFF;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--char); min-height: 100vh; }
+    .hidden { display: none !important; }
+
+    /* ── LOGIN ── */
+    #loginScreen {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, var(--cream) 0%, var(--cream-m) 100%);
+      padding: 20px;
+    }
+    .login-box {
+      background: var(--white); padding: 44px 36px;
+      border-radius: 14px; border: 1px solid var(--cream-d);
+      box-shadow: 0 24px 60px rgba(30,26,23,0.08);
+      width: 100%; max-width: 400px; text-align: center;
+    }
+    .login-box .wm { font-family: 'Cormorant', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.04em; }
+    .login-box h1 { font-family: 'Cormorant', serif; font-size: 2rem; font-weight: 600; margin: 18px 0 8px; }
+    .login-box p { color: var(--gray); font-size: 0.85rem; margin-bottom: 28px; }
+    .login-box input {
+      width: 100%; padding: 12px 14px; margin-bottom: 14px;
+      border: 1.5px solid var(--cream-d); border-radius: 8px;
+      font-size: 0.95rem; font-family: inherit; background: var(--cream);
+    }
+    .login-box input:focus { outline: none; border-color: var(--terra); background: var(--white); }
+    .login-box button {
+      width: 100%; padding: 12px; border: none; border-radius: 8px;
+      background: var(--terra); color: var(--white); font-weight: 600;
+      font-size: 0.92rem; cursor: pointer; font-family: inherit; transition: background 0.18s;
+    }
+    .login-box button:hover { background: var(--terra-d); }
+    .login-err { color: var(--rose); font-size: 0.8rem; margin-top: 12px; min-height: 16px; }
+
+    /* ── HEADER ── */
+    header.adm-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 36px; background: var(--white);
+      border-bottom: 1px solid var(--cream-d);
+      position: sticky; top: 0; z-index: 100;
+    }
+    header.adm-head .wm { font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.04em; }
+    header.adm-head .wm em { color: var(--terra); font-style: italic; }
+    .head-right { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost {
+      padding: 8px 14px; background: none; border: 1.5px solid var(--cream-d);
+      border-radius: 6px; font-size: 0.82rem; font-weight: 500; cursor: pointer;
+      font-family: inherit; color: var(--char-m); transition: all 0.18s;
+    }
+    .btn-ghost:hover { border-color: var(--char-m); color: var(--char); }
+    .live-link { font-size: 0.82rem; color: var(--terra); text-decoration: none; font-weight: 500; }
+
+    /* ── TABS ── */
+    nav.tabs {
+      display: flex; gap: 4px; padding: 14px 36px 0;
+      background: var(--white); border-bottom: 1px solid var(--cream-d);
+    }
+    .tab-btn {
+      padding: 10px 18px; background: none; border: none;
+      border-bottom: 2px solid transparent; cursor: pointer;
+      font-family: inherit; font-size: 0.88rem; font-weight: 500;
+      color: var(--gray); transition: all 0.18s;
+    }
+    .tab-btn:hover { color: var(--char); }
+    .tab-btn.active { color: var(--terra); border-bottom-color: var(--terra); }
+
+    .tab-pane { display: none; padding: 28px 36px 120px; max-width: 1200px; margin: 0 auto; }
+    .tab-pane.active { display: block; }
+
+    .pane-head {
+      display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px; gap: 18px; flex-wrap: wrap;
+    }
+    .pane-head h2 { font-family: 'Cormorant', serif; font-size: 1.85rem; font-weight: 600; }
+    .pane-head .ey { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); margin-bottom: 4px; }
+    .pane-head .meta { color: var(--gray); font-size: 0.85rem; margin-top: 4px; }
+
+    .btn-add {
+      padding: 10px 16px; background: var(--char); color: var(--white);
+      border: none; border-radius: 6px; font-weight: 500; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; transition: background 0.18s;
+    }
+    .btn-add:hover { background: var(--char-m); }
+
+    /* ── CARS ── */
+    .car-list { display: flex; flex-direction: column; gap: 12px; }
+    .car-edit {
+      background: var(--white); border: 1px solid var(--cream-d);
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .car-edit.hot-card { border-left: 3px solid var(--terra); }
+    .car-edit-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px; gap: 10px;
+    }
+    .car-edit-title {
+      font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600;
+    }
+    .car-edit-id { font-size: 0.7rem; color: var(--gray); margin-left: 8px; }
+    .grid-fields {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .fld label {
+      display: block; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 3px;
+    }
+    .fld input, .fld select {
+      width: 100%; padding: 7px 10px;
+      border: 1.5px solid var(--cream-d); border-radius: 5px;
+      font-size: 0.85rem; font-family: inherit; background: var(--cream);
+    }
+    .fld input:focus, .fld select:focus { outline: none; border-color: var(--terra); background: var(--white); }
+    .fld-color {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .fld-color input[type="color"] {
+      width: 36px; height: 30px; padding: 2px; border: 1.5px solid var(--cream-d); border-radius: 5px; cursor: pointer; background: var(--white);
+    }
+    .fld-check {
+      display: flex; align-items: center; gap: 6px; padding-top: 18px;
+    }
+    .fld-check input { width: 16px; height: 16px; cursor: pointer; accent-color: var(--terra); }
+    .fld-check label { font-size: 0.78rem; color: var(--char-m); cursor: pointer; }
+
+    /* ── PHOTOS ── */
+    .photos-block {
+      margin-top: 14px; padding-top: 14px;
+      border-top: 1px dashed var(--cream-d);
+    }
+    .photos-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .photos-head h4 {
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gray); font-weight: 600;
+    }
+    .btn-add-photo {
+      padding: 5px 11px; background: var(--cream); border: 1px solid var(--cream-d);
+      color: var(--terra); border-radius: 5px; font-size: 0.75rem; cursor: pointer;
+      font-family: inherit; font-weight: 500;
+    }
+    .btn-add-photo:hover { background: var(--terra); color: var(--white); border-color: var(--terra); }
+    .photos-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .photo-item {
+      background: var(--cream); border: 1px solid var(--cream-d);
+      border-radius: 6px; padding: 8px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .photo-thumb {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      border-radius: 4px; background: var(--cream-d);
+    }
+    .photo-thumb-empty {
+      width: 100%; aspect-ratio: 4/3; border-radius: 4px;
+      background: var(--cream-d); display: flex; align-items: center; justify-content: center;
+      color: var(--gray); font-size: 0.7rem;
+    }
+    .photo-item input {
+      width: 100%; padding: 5px 7px; font-size: 0.72rem;
+      border: 1px solid var(--cream-d); border-radius: 4px; background: var(--white);
+      font-family: inherit;
+    }
+    .photo-item input:focus { outline: none; border-color: var(--terra); }
+    .photo-actions { display: flex; gap: 5px; }
+    .photo-actions button {
+      flex: 1; padding: 4px; font-size: 0.68rem; cursor: pointer;
+      border: 1px solid var(--cream-d); background: var(--white);
+      border-radius: 4px; font-family: inherit; color: var(--char-m);
+    }
+    .photo-actions button:hover { background: var(--cream-m); }
+    .photo-actions .ph-del { color: var(--rose); }
+    .photo-actions .ph-del:hover { background: var(--rose); color: var(--white); border-color: var(--rose); }
+    .photos-empty {
+      grid-column: 1/-1; padding: 16px; text-align: center;
+      color: var(--gray); font-size: 0.78rem;
+      background: var(--cream); border: 1px dashed var(--cream-d); border-radius: 6px;
+    }
+    .photos-grid.drag-over {
+      outline: 2px dashed var(--terra); outline-offset: -4px;
+      background: rgba(196,96,42,0.05); border-radius: 8px;
+    }
+    .photo-uploading {
+      grid-column: 1/-1; padding: 12px;
+      background: var(--cream); border: 1px solid var(--cream-d); border-radius: 6px;
+      font-size: 0.78rem; color: var(--terra); display: flex; align-items: center; gap: 10px;
+    }
+    .photo-uploading::before {
+      content: ''; width: 12px; height: 12px; border-radius: 50%;
+      border: 2px solid var(--cream-d); border-top-color: var(--terra);
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .btn-del {
+      padding: 6px 11px; background: none; border: 1px solid var(--cream-d);
+      color: var(--rose); border-radius: 5px; font-size: 0.75rem; cursor: pointer;
+      font-family: inherit; transition: all 0.16s;
+    }
+    .btn-del:hover { background: var(--rose); color: var(--white); border-color: var(--rose); }
+
+    /* ── CONTENT FORM ── */
+    .form-section {
+      background: var(--white); border: 1px solid var(--cream-d);
+      border-radius: 10px; padding: 22px 24px; margin-bottom: 16px;
+    }
+    .form-section h3 {
+      font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 600;
+      margin-bottom: 14px; color: var(--char);
+    }
+    .form-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .fld-full { grid-column: 1 / -1; }
+    .fld textarea {
+      width: 100%; padding: 8px 10px; border: 1.5px solid var(--cream-d);
+      border-radius: 5px; font-size: 0.85rem; font-family: inherit;
+      background: var(--cream); resize: vertical; min-height: 70px;
+    }
+    .fld textarea:focus { outline: none; border-color: var(--terra); background: var(--white); }
+    .fld-help { font-size: 0.7rem; color: var(--gray); margin-top: 3px; line-height: 1.5; }
+
+    .review-card {
+      background: var(--cream); border: 1px solid var(--cream-d);
+      border-radius: 8px; padding: 14px; margin-bottom: 10px;
+    }
+    .review-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+
+    /* ── ACTION BAR ── */
+    .action-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--white); border-top: 1px solid var(--cream-d);
+      padding: 14px 36px; display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; z-index: 90;
+      box-shadow: 0 -8px 24px rgba(30,26,23,0.04);
+    }
+    .draft-status { font-size: 0.82rem; color: var(--gray); }
+    .draft-status.dirty { color: var(--terra); font-weight: 500; }
+    .action-btns { display: flex; gap: 10px; }
+    .btn-save {
+      padding: 10px 18px; background: var(--cream-m); border: 1.5px solid var(--cream-d);
+      color: var(--char); border-radius: 6px; font-weight: 500; font-size: 0.85rem;
+      cursor: pointer; font-family: inherit; transition: all 0.18s;
+    }
+    .btn-save:hover { background: var(--cream-d); }
+    .btn-publish {
+      padding: 10px 22px; background: var(--terra); color: var(--white);
+      border: none; border-radius: 6px; font-weight: 600; font-size: 0.88rem;
+      cursor: pointer; font-family: inherit; transition: background 0.18s;
+    }
+    .btn-publish:hover { background: var(--terra-d); }
+    .btn-publish:disabled { background: var(--gray); cursor: not-allowed; }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(120%);
+      background: var(--char); color: var(--white); padding: 12px 22px;
+      border-radius: 8px; font-size: 0.85rem; font-weight: 500;
+      transition: transform 0.32s; z-index: 200; max-width: 90vw;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.err { background: var(--rose); }
+
+    @media (max-width: 720px) {
+      header.adm-head, nav.tabs, .tab-pane, .action-bar { padding-left: 16px; padding-right: 16px; }
+      .grid-fields { grid-template-columns: repeat(2, 1fr); }
+      .live-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <p class="wm">GARDENA <em style="color:var(--terra);font-style:italic">MOTORS</em></p>
+    <h1>Admin</h1>
+    <p>Enter the admin password to continue.</p>
+    <input type="password" id="pwInput" placeholder="Password" autocomplete="off" />
+    <button onclick="doLogin()">Sign in</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="hidden">
+
+  <header class="adm-head">
+    <div class="wm">GARDENA <em>MOTORS</em> · Admin</div>
+    <div class="head-right">
+      <a class="live-link" href="index.html" target="_blank">View site ↗</a>
+      <button class="btn-ghost" id="ghTokenBtn" onclick="forgetToken()" title="Remove the saved GitHub token from this device">Forget token</button>
+      <button class="btn-ghost" onclick="logout()">Sign out</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="inventory" onclick="switchTab('inventory')">🚗 Inventory</button>
+    <button class="tab-btn" data-tab="content" onclick="switchTab('content')">✏️ Content</button>
+  </nav>
+
+  <!-- INVENTORY TAB -->
+  <div class="tab-pane active" id="tab-inventory">
+    <div class="pane-head">
+      <div>
+        <p class="ey">Inventory</p>
+        <h2>Cars on the lot</h2>
+        <p class="meta" id="invMeta">—</p>
+      </div>
+      <button class="btn-add" onclick="addCar()">+ Add a car</button>
+    </div>
+    <div class="car-list" id="carList"></div>
+    <datalist id="makes-dl"></datalist>
+  </div>
+
+  <!-- CONTENT TAB -->
+  <div class="tab-pane" id="tab-content">
+    <div class="pane-head">
+      <div>
+        <p class="ey">Site content</p>
+        <h2>Text, contact info, reviews</h2>
+        <p class="meta">Edit anything below. Changes show on the live site after you publish.</p>
+      </div>
+    </div>
+    <div id="contentForm"></div>
+  </div>
+
+  <!-- ACTION BAR -->
+  <div class="action-bar">
+    <div class="draft-status" id="draftStatus">No unsaved changes</div>
+    <div class="action-btns">
+      <button class="btn-save"    onclick="saveDraft()">💾 Save draft</button>
+      <button class="btn-publish" onclick="publish()">🌐 Publish to website</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="car-models.js"></script>
+<script src="github-api.js"></script>
+<script>
+/* ──────────────────────────────────────────────────────────────
+   GARDENA MOTORS ADMIN
+   ────────────────────────────────────────────────────────────── */
+
+const ADMIN_PASSWORD = 'gardena2026'; // CHANGE THIS to a real password before deploying
+
+let CARS = [];
+let CFG  = {};
+let activeTab = 'inventory';
+let dirty = false;
+
+/* ── LOGIN ── */
+function doLogin() {
+  const pw = document.getElementById('pwInput').value;
+  if (pw === ADMIN_PASSWORD) {
+    sessionStorage.setItem('gm_admin', '1');
+    showAdmin();
+  } else {
+    document.getElementById('loginErr').textContent = 'Incorrect password.';
+  }
+}
+function logout() {
+  if (dirty && !confirm('You have unsaved changes. Sign out anyway?')) return;
+  sessionStorage.removeItem('gm_admin');
+  location.reload();
+}
+function showAdmin() {
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('adminPanel').classList.remove('hidden');
+  refreshTokenBtn();
+  loadAll();
+}
+
+/* ── LOAD DATA ── */
+async function loadAll() {
+  try {
+    const draftCars = localStorage.getItem('gm_draft_cars');
+    const draftCfg  = localStorage.getItem('gm_draft_cfg');
+
+    const [cars, cfg] = await Promise.all([
+      fetch('cars.json').then(r => r.json()),
+      fetch('config.json').then(r => r.json())
+    ]);
+
+    CARS = draftCars ? JSON.parse(draftCars) : cars;
+    CFG  = draftCfg  ? JSON.parse(draftCfg)  : cfg;
+
+    if (draftCars || draftCfg) markDirty('Loaded unsaved draft.');
+
+    renderInventory();
+    renderContentForm();
+  } catch (e) {
+    toast('Failed to load data: ' + e.message, true);
+  }
+}
+
+/* ── TABS ── */
+function switchTab(name) {
+  activeTab = name;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+}
+
+/* ── INVENTORY ── */
+function renderInventory() {
+  const list = document.getElementById('carList');
+  list.innerHTML = CARS.map((c, i) => carCardHTML(c, i)).join('');
+  populateMakesDatalist();
+  updateInvMeta();
+}
+
+function populateMakesDatalist() {
+  const dl = document.getElementById('makes-dl');
+  if (!dl || typeof CAR_MODELS === 'undefined') return;
+  dl.innerHTML = Object.keys(CAR_MODELS).sort().map(m => `<option value="${m}">`).join('');
+}
+
+function modelOptionsFor(make) {
+  if (typeof CAR_MODELS === 'undefined' || !CAR_MODELS[make]) return '';
+  return Object.keys(CAR_MODELS[make]).sort().map(m => `<option value="${m}">`).join('');
+}
+
+function updMake(i, val) {
+  CARS[i].make = val;
+  markDirty();
+  const dl = document.getElementById(`models-${i}`);
+  if (dl) dl.innerHTML = modelOptionsFor(val);
+  updateCardTitle(i);
+  onModelChange(i);
+}
+
+function onModelChange(i) {
+  const c = CARS[i];
+  const spec = (typeof CAR_MODELS !== 'undefined') && CAR_MODELS[c.make] && CAR_MODELS[c.make][c.model];
+  if (!spec) return;
+  c.engine = spec.engine; c.mpg = spec.mpg; c.type = spec.type;
+  const card = document.querySelector(`.car-edit[data-idx="${i}"]`);
+  if (card) {
+    const inputs = card.querySelectorAll('.fld input, .fld select');
+    inputs.forEach(el => {
+      const oi = el.getAttribute('oninput') || el.getAttribute('onchange') || '';
+      if (oi.includes("'engine'")) el.value = spec.engine;
+      else if (oi.includes("'mpg'")) el.value = spec.mpg;
+      else if (oi.includes("'type'")) el.value = spec.type;
+    });
+  }
+  markDirty('Auto-filled engine, MPG, body type.');
+}
+
+function updateCardTitle(i) {
+  const card = document.querySelector(`.car-edit[data-idx="${i}"] .car-edit-title`);
+  if (card) card.innerHTML = `${CARS[i].year || '—'} ${CARS[i].make || ''} <em style="color:var(--terra);font-style:italic">${CARS[i].model || 'New car'}</em><span class="car-edit-id">ID #${CARS[i].id ?? '?'}</span>`;
+}
+
+function updateInvMeta() {
+  const hot = CARS.filter(c => c.hot).length;
+  document.getElementById('invMeta').textContent =
+    `${CARS.length} car${CARS.length === 1 ? '' : 's'} · ${hot} hot deal${hot === 1 ? '' : 's'}`;
+}
+
+function carCardHTML(c, i) {
+  const types = ['sedan','suv','truck','coupe'];
+  const transOpts = ['Automatic','Manual','CVT'];
+  return `
+    <div class="car-edit ${c.hot ? 'hot-card' : ''}" data-idx="${i}">
+      <div class="car-edit-head">
+        <div class="car-edit-title">
+          ${c.year || '—'} ${c.make || ''} <em style="color:var(--terra);font-style:italic">${c.model || 'New car'}</em>
+          <span class="car-edit-id">ID #${c.id ?? '?'}</span>
+        </div>
+        <button class="btn-del" onclick="deleteCar(${i})">Delete</button>
+      </div>
+      <div class="grid-fields">
+        <div class="fld"><label>Year</label><input type="number" value="${c.year ?? ''}"  oninput="updCar(${i},'year',+this.value)"></div>
+        <div class="fld"><label>Make</label><input list="makes-dl" value="${c.make ?? ''}" oninput="updMake(${i},this.value)"></div>
+        <div class="fld"><label>Model</label><input list="models-${i}" value="${c.model ?? ''}" oninput="updCar(${i},'model',this.value)" onchange="onModelChange(${i})">
+          <datalist id="models-${i}">${modelOptionsFor(c.make)}</datalist>
+        </div>
+        <div class="fld"><label>Body Type</label><select onchange="updCar(${i},'type',this.value)">
+          ${types.map(t => `<option value="${t}" ${c.type===t?'selected':''}>${t.toUpperCase()}</option>`).join('')}
+        </select></div>
+        <div class="fld"><label>Price ($)</label><input type="number" value="${c.price ?? ''}" oninput="updCar(${i},'price',+this.value)"></div>
+        <div class="fld"><label>Mileage</label><input value="${c.miles ?? ''}"           oninput="updCar(${i},'miles',this.value)" placeholder="e.g. 34,200"></div>
+        <div class="fld"><label>Transmission</label><select onchange="updCar(${i},'trans',this.value)">
+          ${transOpts.map(t => `<option value="${t}" ${c.trans===t?'selected':''}>${t}</option>`).join('')}
+        </select></div>
+        <div class="fld"><label>Color name</label><input value="${c.color ?? ''}"        oninput="updCar(${i},'color',this.value)" placeholder="e.g. Silver"></div>
+        <div class="fld"><label>Engine</label><input value="${c.engine ?? ''}"           oninput="updCar(${i},'engine',this.value)" placeholder="e.g. 2.5L 4-Cyl"></div>
+        <div class="fld"><label>MPG</label><input value="${c.mpg ?? ''}"                 oninput="updCar(${i},'mpg',this.value)" placeholder="e.g. 28/39"></div>
+        <div class="fld"><label>VIN</label><input value="${c.vin ?? ''}"                 oninput="updCar(${i},'vin',this.value)" placeholder="17 chars"></div>
+        <div class="fld"><label>Card colors</label>
+          <div class="fld-color">
+            <input type="color" value="${(c.g && c.g[0]) || '#9EA5AD'}" oninput="updGrad(${i},0,this.value)" title="Top color">
+            <input type="color" value="${(c.g && c.g[1]) || '#6A7078'}" oninput="updGrad(${i},1,this.value)" title="Bottom color">
+          </div>
+        </div>
+        <div class="fld-check">
+          <input type="checkbox" id="hot-${i}" ${c.hot ? 'checked' : ''} onchange="updCar(${i},'hot',this.checked); refreshHotStripe(${i})">
+          <label for="hot-${i}">Hot Deal 🔥</label>
+        </div>
+      </div>
+      <div class="photos-block">
+        <div class="photos-head">
+          <h4>Photos <span style="color:var(--gray);font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem">· first photo is the cover</span></h4>
+          <div style="display:flex;gap:6px;">
+            <button class="btn-add-photo" onclick="document.getElementById('upl-${i}').click()" title="Upload from your computer">⬆ Upload</button>
+            <input type="file" id="upl-${i}" accept="image/*" multiple style="display:none" onchange="handleUpload(${i}, this.files); this.value=''">
+            <button class="btn-add-photo" onclick="addPhoto(${i})" title="Paste an image URL">+ URL</button>
+          </div>
+        </div>
+        <div class="photos-grid" id="photos-${i}" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFiles(event, ${i})">${photosHTML(c, i)}</div>
+      </div>
+    </div>`;
+}
+
+function photosHTML(c, i) {
+  const ph = Array.isArray(c.photos) ? c.photos : [];
+  if (!ph.length) return `<div class="photos-empty">No photos yet. Click "+ Add photo" to add image URLs.</div>`;
+  return ph.map((url, pi) => `
+    <div class="photo-item">
+      ${url ? `<img class="photo-thumb" src="${url}" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-thumb-empty',textContent:'(image not loading)'}))">` : `<div class="photo-thumb-empty">Paste URL below</div>`}
+      <input value="${(url || '').replace(/"/g,'&quot;')}" placeholder="https://..." oninput="updPhoto(${i},${pi},this.value)" onchange="renderPhotos(${i})">
+      <div class="photo-actions">
+        ${pi > 0 ? `<button onclick="movePhoto(${i},${pi},-1)" title="Move up">↑</button>` : ''}
+        ${pi < ph.length - 1 ? `<button onclick="movePhoto(${i},${pi},+1)" title="Move down">↓</button>` : ''}
+        <button class="ph-del" onclick="delPhoto(${i},${pi})">Remove</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPhotos(i) {
+  const el = document.getElementById('photos-' + i);
+  if (el) el.innerHTML = photosHTML(CARS[i], i);
+}
+
+function addPhoto(i) {
+  if (!Array.isArray(CARS[i].photos)) CARS[i].photos = [];
+  CARS[i].photos.push('');
+  renderPhotos(i);
+  markDirty();
+}
+
+/* ── GITHUB TOKEN ── */
+function refreshTokenBtn() {
+  const btn = document.getElementById('ghTokenBtn');
+  if (!btn) return;
+  const has = (typeof hasCachedToken === 'function') && hasCachedToken();
+  btn.style.display = has ? '' : 'none';
+}
+function forgetToken() {
+  if (!confirm('Forget the saved GitHub token? You\'ll be asked for it again next time you upload or publish.')) return;
+  if (typeof clearCachedToken === 'function') clearCachedToken();
+  refreshTokenBtn();
+  toast('GitHub token forgotten.');
+}
+
+/* ── PHOTO UPLOAD ── */
+function dragOver(e)  { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function dragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+function dropFiles(e, i) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const files = [...(e.dataTransfer?.files || [])].filter(f => f.type.startsWith('image/'));
+  if (files.length) handleUpload(i, files);
+}
+
+async function handleUpload(i, files) {
+  if (!files || !files.length) return;
+  const list = [...files];
+
+  /* Get token once for the whole batch */
+  let token;
+  try { token = getCachedToken(); }
+  catch (e) { toast(e.message, true); return; }
+
+  if (!Array.isArray(CARS[i].photos)) CARS[i].photos = [];
+  const grid = document.getElementById('photos-' + i);
+  const carId = CARS[i].id;
+
+  for (const file of list) {
+    if (file.size > 8 * 1024 * 1024) {
+      toast(`"${file.name}" is over 8 MB. Please resize it first.`, true);
+      continue;
+    }
+    /* Show uploading row */
+    const row = document.createElement('div');
+    row.className = 'photo-uploading';
+    row.textContent = `Uploading ${file.name}…`;
+    grid.appendChild(row);
+
+    try {
+      const path = await uploadPhotoToGitHub(carId, file, token);
+      CARS[i].photos.push(path);
+      markDirty();
+    } catch (err) {
+      toast(err.message || 'Upload failed.', true);
+    } finally {
+      row.remove();
+    }
+  }
+  renderPhotos(i);
+  refreshTokenBtn();
+  toast(`Uploaded ${list.length} photo${list.length === 1 ? '' : 's'}.`);
+}
+
+function updPhoto(i, pi, url) {
+  if (!Array.isArray(CARS[i].photos)) CARS[i].photos = [];
+  CARS[i].photos[pi] = url;
+  markDirty();
+}
+
+function delPhoto(i, pi) {
+  if (!Array.isArray(CARS[i].photos)) return;
+  CARS[i].photos.splice(pi, 1);
+  renderPhotos(i);
+  markDirty();
+}
+
+function movePhoto(i, pi, dir) {
+  const arr = CARS[i].photos;
+  if (!Array.isArray(arr)) return;
+  const j = pi + dir;
+  if (j < 0 || j >= arr.length) return;
+  [arr[pi], arr[j]] = [arr[j], arr[pi]];
+  renderPhotos(i);
+  markDirty();
+}
+
+function updCar(i, key, val) {
+  CARS[i][key] = val;
+  markDirty();
+  if (key === 'year' || key === 'make' || key === 'model') {
+    const card = document.querySelector(`.car-edit[data-idx="${i}"] .car-edit-title`);
+    if (card) card.innerHTML = `${CARS[i].year || '—'} ${CARS[i].make || ''} <em style="color:var(--terra);font-style:italic">${CARS[i].model || 'New car'}</em><span class="car-edit-id">ID #${CARS[i].id ?? '?'}</span>`;
+  }
+  if (key === 'hot') updateInvMeta();
+}
+
+function refreshHotStripe(i) {
+  const card = document.querySelector(`.car-edit[data-idx="${i}"]`);
+  if (card) card.classList.toggle('hot-card', !!CARS[i].hot);
+}
+
+function updGrad(i, idx, hex) {
+  if (!CARS[i].g) CARS[i].g = ['#9EA5AD','#6A7078'];
+  CARS[i].g[idx] = hex.toUpperCase();
+  markDirty();
+}
+
+function addCar() {
+  const newId = CARS.length ? Math.max(...CARS.map(c => +c.id || 0)) + 1 : 1;
+  CARS.unshift({
+    id: newId, year: new Date().getFullYear(), make: '', model: '',
+    type: 'sedan', price: 0, miles: '', trans: 'Automatic',
+    color: '', engine: '', mpg: '', vin: '', hot: false,
+    g: ['#9EA5AD','#6A7078'],
+    photos: []
+  });
+  renderInventory();
+  markDirty('Added new car.');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function deleteCar(i) {
+  const c = CARS[i];
+  if (!confirm(`Delete ${c.year} ${c.make} ${c.model}?`)) return;
+  CARS.splice(i, 1);
+  renderInventory();
+  markDirty('Deleted car.');
+}
+
+/* ── CONTENT FORM ── */
+function renderContentForm() {
+  const sections = [
+    { title: 'Business identity', fields: [
+      { k: 'dealerName', label: 'Dealer name', help: 'Appears in nav, footer, page titles.' },
+      { k: 'year',       label: 'Copyright year' }
+    ]},
+    { title: 'Contact', fields: [
+      { k: 'phone',    label: 'Phone (display)', help: 'How the number is shown, e.g. (310) 555-0000' },
+      { k: 'phoneTel', label: 'Phone (call link)', help: 'Format: tel:+13105550000' },
+      { k: 'phoneSms', label: 'Phone (text link)', help: 'Format: sms:+13105550000' }
+    ]},
+    { title: 'Location & hours', fields: [
+      { k: 'address',   label: 'Street address' },
+      { k: 'cityFull',  label: 'City, state ZIP', help: 'e.g. Gardena, CA 90249' },
+      { k: 'cityShort', label: 'City (short)',    help: 'Used in hero eyebrow' },
+      { k: 'region',    label: 'Region',          help: 'e.g. South Bay LA' },
+      { k: 'hours',     label: 'Hours',           help: 'e.g. Open 7 days · 9am to 7pm', full: true }
+    ]},
+    { title: 'Hero section (top of homepage)', fields: [
+      { k: 'heroEyebrow', label: 'Small label above headline', full: true },
+      { k: 'heroTagline', label: 'Main headline (HTML allowed)', help: 'Use <br> for line breaks, <em>word</em> for italic terracotta highlights.', textarea: true, full: true },
+      { k: 'heroDesc',    label: 'Subheading paragraph', textarea: true, full: true },
+      { k: 'heroVideo',   label: 'Background video file path', help: 'e.g. assets/hero.mp4 — drop a short looping MP4 (10-15s, under 3MB). Leave blank for plain background.', full: true },
+      { k: 'heroPoster',  label: 'Video poster image (optional)', help: 'Shown until video loads. e.g. assets/hero-poster.jpg', full: true }
+    ]},
+    { title: 'Trust section', fields: [
+      { k: 'trustParagraph', label: '"Why us" paragraph', textarea: true, full: true }
+    ]},
+    { title: 'Call-to-action band', fields: [
+      { k: 'ctaHeading',     label: 'Heading (HTML allowed)', textarea: true, full: true },
+      { k: 'ctaSubtext',     label: 'Subtext line', full: true },
+      { k: 'footerTagline',  label: 'Footer tagline', textarea: true, full: true },
+      { k: 'carCtaSubtitle', label: 'Car page CTA subtitle', help: 'Shown below "Interested in this car?"', textarea: true, full: true }
+    ]}
+  ];
+
+  let html = sections.map(s => `
+    <div class="form-section">
+      <h3>${s.title}</h3>
+      <div class="form-grid">
+        ${s.fields.map(f => `
+          <div class="fld ${f.full ? 'fld-full' : ''}">
+            <label>${f.label}</label>
+            ${f.textarea
+              ? `<textarea oninput="updCfg('${f.k}', this.value)">${escapeHTML(CFG[f.k] ?? '')}</textarea>`
+              : `<input value="${escapeAttr(CFG[f.k] ?? '')}" oninput="updCfg('${f.k}', this.value)">`}
+            ${f.help ? `<p class="fld-help">${f.help}</p>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  /* Reviews — repeatable */
+  html += `
+    <div class="form-section">
+      <h3>Customer reviews</h3>
+      <div id="reviewList">${(CFG.reviews || []).map((r, i) => reviewHTML(r, i)).join('')}</div>
+      <button class="btn-add" style="margin-top:10px" onclick="addReview()">+ Add review</button>
+    </div>
+  `;
+
+  document.getElementById('contentForm').innerHTML = html;
+}
+
+function reviewHTML(r, i) {
+  return `
+    <div class="review-card" data-rev="${i}">
+      <div class="review-row">
+        <div class="fld"><label>Author name</label><input value="${escapeAttr(r.author ?? '')}" oninput="updReview(${i},'author',this.value)"></div>
+        <div class="fld"><label>Author location</label><input value="${escapeAttr(r.location ?? '')}" oninput="updReview(${i},'location',this.value)"></div>
+      </div>
+      <div class="fld"><label>Review text</label>
+        <textarea oninput="updReview(${i},'text',this.value)">${escapeHTML(r.text ?? '')}</textarea>
+      </div>
+      <div style="text-align:right;margin-top:8px">
+        <button class="btn-del" onclick="deleteReview(${i})">Delete review</button>
+      </div>
+    </div>`;
+}
+
+function updCfg(key, val) { CFG[key] = val; markDirty(); }
+function updReview(i, key, val) { CFG.reviews[i][key] = val; markDirty(); }
+
+function addReview() {
+  if (!CFG.reviews) CFG.reviews = [];
+  CFG.reviews.push({ text: '', author: '', location: '' });
+  renderContentForm();
+  markDirty('Added review.');
+}
+function deleteReview(i) {
+  if (!confirm('Delete this review?')) return;
+  CFG.reviews.splice(i, 1);
+  renderContentForm();
+  markDirty('Deleted review.');
+}
+
+/* ── DRAFT + PUBLISH ── */
+function markDirty(msg) {
+  dirty = true;
+  const el = document.getElementById('draftStatus');
+  el.classList.add('dirty');
+  el.textContent = msg || 'Unsaved changes';
+}
+function markClean(msg) {
+  dirty = false;
+  const el = document.getElementById('draftStatus');
+  el.classList.remove('dirty');
+  el.textContent = msg || 'No unsaved changes';
+}
+
+function saveDraft() {
+  localStorage.setItem('gm_draft_cars', JSON.stringify(CARS));
+  localStorage.setItem('gm_draft_cfg',  JSON.stringify(CFG));
+  toast('Draft saved locally.');
+  markClean('Draft saved · not yet published');
+}
+
+async function publish() {
+  if (!confirm('Publish to live website? This will commit changes to GitHub and trigger a rebuild.')) return;
+
+  if (GITHUB_CONFIG.owner.startsWith('TODO_')) {
+    toast('GitHub repo not configured yet. Edit github-api.js first.', true);
+    return;
+  }
+
+  const btn = document.querySelector('.btn-publish');
+  btn.disabled = true; btn.textContent = 'Publishing…';
+
+  try {
+    const token = promptForGitHubToken();
+    const carsJson = JSON.stringify(CARS, null, 2);
+    const cfgJson  = JSON.stringify(CFG,  null, 2);
+
+    await uploadFileToGitHub('cars.json',   carsJson, commitMessage('Update inventory'),  token);
+    await uploadFileToGitHub('config.json', cfgJson,  commitMessage('Update site content'), token);
+
+    localStorage.removeItem('gm_draft_cars');
+    localStorage.removeItem('gm_draft_cfg');
+    markClean('Published · live in ~1 minute');
+    toast('Published! Site rebuilds in ~1 minute.');
+  } catch (e) {
+    toast('Publish failed: ' + e.message, true);
+  } finally {
+    btn.disabled = false; btn.textContent = '🌐 Publish to website';
+  }
+}
+
+/* ── HELPERS ── */
+function toast(msg, isErr) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.toggle('err', !!isErr);
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+function escapeHTML(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function escapeAttr(s) { return String(s).replace(/"/g, '&quot;'); }
+
+/* ── INIT ── */
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+document.getElementById('pwInput').addEventListener('keypress', e => { if (e.key === 'Enter') doLogin(); });
+if (sessionStorage.getItem('gm_admin') === '1') showAdmin();
+</script>
+</body>
+</html>
