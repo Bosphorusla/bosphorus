@@ -87,9 +87,10 @@
       transition: background 0.3s ease, backdrop-filter 0.3s ease;
     }
     nav.scrolled {
-      background: rgba(245,239,228,0.93);
+      background: rgba(14,15,18,0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,137,74,0.18);
     }
     .wordmark {
       font-family: 'Cormorant', serif;
@@ -106,9 +107,9 @@
       transition: color 0.3s ease;
     }
     .nav-right a:hover { color: var(--white); }
-    nav.scrolled .nav-right a { color: var(--gray); }
-    nav.scrolled .nav-right a:hover { color: var(--char); }
-    .nav-mob-btn span { background: var(--cream-m); transition: background 0.3s ease; }
+    nav.scrolled .nav-right a { color: rgba(242,237,228,0.7); }
+    nav.scrolled .nav-right a:hover { color: var(--white); }
+    .nav-mob-btn span { background: var(--char); transition: background 0.3s ease; }
     nav.scrolled .nav-mob-btn span { background: var(--char); }
     .nav-cta {
       background: var(--terra) !important; color: var(--white) !important;
@@ -662,8 +663,9 @@
     .mob-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
       display: none; align-items: stretch;
-      background: var(--char); border-top: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 -8px 24px rgba(0,0,0,0.18);
+      background: var(--cream-m); border-top: 1px solid rgba(184,137,74,0.22);
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.4);
+      padding-bottom: env(safe-area-inset-bottom);
     }
     .mob-bar a {
       flex: 1; padding: 14px; text-align: center;
@@ -672,8 +674,9 @@
       display: flex; align-items: center; justify-content: center; gap: 8px;
       font-family: 'DM Sans', sans-serif;
     }
-    .mob-bar a + a { border-left: 1px solid rgba(255,255,255,0.08); }
-    .mob-bar a.terra { background: var(--terra); }
+    .mob-bar a + a { border-left: 1px solid rgba(184,137,74,0.18); }
+    .mob-bar a.terra { background: var(--terra); color: var(--white); }
+    .mob-bar a:not(.terra) { color: var(--char); }
     .mob-bar a svg { width: 16px; height: 16px; }
 
     /* ── ENTRANCE ANIMATIONS ── */
