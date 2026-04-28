@@ -722,28 +722,98 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-visual { height: 340px; order: -1; }
+      .hero-visual { height: 360px; order: -1; }
       .trust-grid { grid-template-columns: 1fr; gap: 44px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 900px) {
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .trade-grid { grid-template-columns: 1fr; gap: 40px; }
       .location-grid { grid-template-columns: 1fr; gap: 36px; }
+      .trust-section, .process-section, .trade-section, .location-section { padding: 64px 6vw; }
+      .inv-section { padding: 56px 6vw; }
+      .hot-section { padding: 40px 6vw 0; }
     }
     @media (max-width: 640px) {
+      nav { padding: 14px 5vw; }
+      .wordmark { font-size: 1.05rem; }
       .nav-right a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
       .nav-mob-btn { display: flex; }
-      .hero-copy { padding: 48px 6vw; }
-      .hero-stats { gap: 24px; flex-wrap: wrap; }
-      .cta-band { text-align: center; justify-content: center; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .pillars { grid-template-columns: 1fr 1fr; }
-      .process-grid { grid-template-columns: 1fr; }
+      .hero-visual { height: 300px; }
+      .hero-car-wrap.has-photo { width: 88%; }
+      .hero-car-photo { border-radius: 12px; }
+      .show-arrow { width: 38px; height: 38px; }
+      .show-arrow.left { left: 10px; }
+      .show-arrow.right { right: 10px; }
+      .show-arrow svg { width: 16px; height: 16px; }
+      .show-counter { font-size: 0.78rem; top: 14px; }
+      .show-counter .cur { font-size: 1.05rem; }
+      .show-dots { bottom: 14px; max-width: 70%; }
+      .feat-card { left: 12px; right: 12px; bottom: 44px; max-width: none; padding: 12px 14px; }
+      .feat-card .feat-name { font-size: 1.1rem; margin-bottom: 5px; }
+      .feat-card .feat-price { font-size: 1.2rem; }
+      .visual-label, .scroll-ind { display: none; }
+      .hero-copy { padding: 44px 6vw 52px; }
+      .hero-copy h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); margin-bottom: 18px; }
+      .hero-desc { font-size: 0.92rem; line-height: 1.65; margin-bottom: 28px; }
+      .eyebrow { font-size: 0.66rem; margin-bottom: 16px; }
+      .eyebrow::before { width: 18px; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; margin-top: 36px; padding-top: 26px; }
+      .stat-n { font-size: 1.9rem; }
+      .stat-l { font-size: 0.7rem; }
+      .btn-fill, .btn-white, .btn-outline-terra { padding: 11px 20px; font-size: 0.84rem; }
+      .ticker { padding: 10px 0; }
+      .ticker-track span { font-size: 0.66rem; padding: 0 22px; gap: 22px; }
+      .search-wrap { padding: 28px 5vw; }
+      .search-row { gap: 8px; }
+      .search-row select, .search-row input { min-width: 0; flex: 1 1 calc(50% - 4px); padding: 10px 12px; font-size: 0.82rem; }
+      .search-row input[type="text"] { flex: 1 1 100%; }
+      .search-btn { flex: 1 1 100%; padding: 12px; }
+      .sec-head { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
+      .sec-title { font-size: clamp(1.7rem, 6.5vw, 2.2rem); }
+      .pills { gap: 6px; margin-bottom: 22px; }
+      .pill { padding: 5px 12px; font-size: 0.74rem; }
+      .car-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .hot-row { gap: 12px; padding-left: 5vw; padding-right: 5vw; margin-left: -5vw; margin-right: -5vw; }
+      .hot-row .car-card { flex: 0 0 78%; }
+      .card-body { padding: 13px 14px 15px; }
+      .card-name { font-size: 1.05rem; margin-bottom: 8px; }
+      .card-specs { gap: 10px; margin-bottom: 10px; }
+      .card-spec { font-size: 0.7rem; }
+      .card-price { font-size: 1.25rem; }
+      .card-btn { padding: 6px 11px; font-size: 0.72rem; }
+      .trust-section { padding: 56px 5vw; }
+      .pillars { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 26px; }
+      .pillar { padding: 14px 16px; }
+      .pillar-n { font-size: 1.7rem; }
+      .pillar-l { font-size: 0.72rem; }
+      .review { padding: 16px 18px; }
+      .review-text { font-size: 0.82rem; }
+      .cta-band { padding: 56px 5vw; text-align: center; justify-content: center; gap: 22px; }
+      .cta-actions { width: 100%; justify-content: center; }
+      .process-section, .trade-section, .location-section { padding: 56px 5vw; }
+      .process-grid { grid-template-columns: 1fr; gap: 14px; }
+      .process-step { padding: 22px 20px; }
+      .process-num { font-size: 1.8rem; margin-bottom: 10px; }
+      .process-step h3 { font-size: 1.2rem; }
+      .trade-form { padding: 22px 18px; }
       .trade-form .trade-row { grid-template-columns: 1fr; }
+      .trade-copy p { font-size: 0.92rem; }
+      .trade-points li { font-size: 0.86rem; padding: 8px 0; }
+      .location-list li { padding: 12px 0; }
+      .location-map { aspect-ratio: 4/3; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+      footer { padding: 44px 5vw 80px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
       .mob-bar { display: flex; }
-      body { padding-bottom: 56px; }
+      body { padding-bottom: 60px; }
+    }
+    @media (max-width: 380px) {
+      .hero-copy h1 { font-size: 2.2rem; }
+      .hero-stats { gap: 14px; }
+      .stat-n { font-size: 1.7rem; }
+      .car-grid { grid-template-columns: 1fr; }
+      .hot-row .car-card { flex: 0 0 84%; }
     }
   </style>
 </head>
