@@ -1146,12 +1146,14 @@ function paintShow(i) {
   const grad = (c.g && c.g.length === 2) ? c.g : ['#9EA5AD','#6A7078'];
   const ph = carPhotos(c);
   const wrap = document.getElementById('hero-car');
+  const href = `car.html?id=${c.id}`;
+  const label = `${c.year} ${c.make} ${c.model}`;
   if (ph.length) {
     wrap.classList.add('has-photo');
-    wrap.innerHTML = `<img class="hero-car-photo" src="${ph[0]}" alt="${c.year} ${c.make} ${c.model}" />`;
+    wrap.innerHTML = `<a href="${href}" aria-label="View ${label}" style="display:block;cursor:pointer"><img class="hero-car-photo" src="${ph[0]}" alt="${label}" /></a>`;
   } else {
     wrap.classList.remove('has-photo');
-    wrap.innerHTML = getCarSVG(c.type || 'sedan', grad, 500);
+    wrap.innerHTML = `<a href="${href}" aria-label="View ${label}" style="display:block;cursor:pointer">${getCarSVG(c.type || 'sedan', grad, 500)}</a>`;
   }
   const card = document.getElementById('feat-card');
   card.style.display = '';
