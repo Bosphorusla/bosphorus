@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inventory — Gardena Motors</title>
+  <title>Inventory — Bosphorus Auto</title>
   <meta name="description" content="Browse our full inventory of quality pre-owned vehicles in Gardena, CA. Sedans, SUVs, trucks, and coupes — all inspected, no hidden fees." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,15 +13,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:   #F5EFE4;
-      --cream-m: #EDE4D3;
-      --cream-d: #E0D4BC;
-      --terra:   #C4602A;
-      --terra-d: #A34E21;
-      --terra-l: #D97B46;
-      --char:    #1E1A17;
-      --char-m:  #3D3830;
-      --gray:    #8A8076;
+      --cream:   #0E0F12;
+      --cream-m: #16181C;
+      --cream-d: #2A2D33;
+      --terra:   #B8894A;
+      --terra-d: #9C7239;
+      --terra-l: #D4A66A;
+      --char:    #F2EDE4;
+      --char-m:  #C9C3B7;
+      --gray:    #8A8B8F;
       --white:   #FFFFFF;
     }
 
@@ -58,7 +58,7 @@
     .sort-row { display: flex; align-items: center; gap: 10px; }
     .sort-label { font-size: 0.78rem; color: var(--gray); white-space: nowrap; }
     .sort-select {
-      background: var(--white); border: 1.5px solid var(--cream-d);
+      background: var(--cream-m); border: 1.5px solid var(--cream-d);
       padding: 8px 12px; border-radius: 7px;
       font-size: 0.82rem; color: var(--char); font-family: 'DM Sans', sans-serif;
       appearance: none; outline: none; transition: border-color 0.18s; cursor: pointer;
@@ -76,7 +76,7 @@
 
     /* ── SIDEBAR ── */
     .sidebar { position: sticky; top: 80px; }
-    .sidebar-inner { background: var(--white); border: 1px solid var(--cream-d); border-radius: 12px; overflow: hidden; }
+    .sidebar-inner { background: var(--cream-m); border: 1px solid var(--cream-d); border-radius: 12px; overflow: hidden; }
     .filter-section { padding: 18px 20px; border-bottom: 1px solid var(--cream-d); }
     .filter-section:last-child { border-bottom: none; }
     .filter-title {
@@ -105,7 +105,7 @@
       font-size: 0.82rem; color: var(--char); font-family: 'DM Sans', sans-serif;
       width: 100%; outline: none; transition: border-color 0.18s;
     }
-    .range-input:focus { border-color: var(--terra); background: var(--white); }
+    .range-input:focus { border-color: var(--terra); background: var(--cream-m); }
     .range-input::placeholder { color: var(--gray); }
 
     /* Clear filters */
@@ -133,7 +133,7 @@
     .car-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
 
     /* Car card */
-    .car-card { background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--cream-d); transition: box-shadow 0.22s, transform 0.22s; cursor: pointer; }
+    .car-card { background: var(--cream-m); border-radius: 12px; overflow: hidden; border: 1px solid var(--cream-d); transition: box-shadow 0.22s, transform 0.22s; cursor: pointer; }
     .car-card:hover { box-shadow: 0 10px 36px rgba(30,26,23,0.1); transform: translateY(-2px); }
     .card-img { position: relative; width: 100%; aspect-ratio: 3/2; overflow: hidden; }
     .card-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
@@ -156,7 +156,7 @@
     /* ── LOAD MORE ── */
     .load-more-wrap { text-align: center; padding: 36px 0 0; }
     .load-more-btn {
-      background: var(--white); color: var(--char);
+      background: var(--cream-m); color: var(--char);
       border: 1.5px solid var(--cream-d);
       padding: 12px 32px; border-radius: 8px;
       font-size: 0.88rem; font-weight: 500; cursor: pointer;
@@ -174,7 +174,7 @@
     /* ── MOBILE FILTER TOGGLE ── */
     .filter-toggle {
       display: none; align-items: center; gap: 8px;
-      background: var(--white); border: 1.5px solid var(--cream-d);
+      background: var(--cream-m); border: 1.5px solid var(--cream-d);
       padding: 9px 16px; border-radius: 8px;
       font-size: 0.84rem; font-weight: 500; color: var(--char);
       cursor: pointer; font-family: 'DM Sans', sans-serif;
@@ -214,7 +214,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="wordmark" data-cfg="dealerName">Gardena Motors</a>
+  <a href="index.html" class="wordmark" data-cfg="dealerName">Bosphorus Auto</a>
   <div class="nav-right">
     <a href="inventory.html" class="active">Inventory</a>
     <a href="index.html#about">About</a>
@@ -347,7 +347,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-bottom">
-    <p id="cfg-copyright">© 2026 Gardena Motors · 1234 W Rosecrans Ave, Gardena CA 90249</p>
+    <p id="cfg-copyright">© 2026 Bosphorus Auto · 1234 W Rosecrans Ave, Gardena CA 90249</p>
     <a href="index.html">← Back to home</a>
   </div>
 </footer>

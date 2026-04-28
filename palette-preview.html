@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Palette Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:Inter,sans-serif}
+  .pal{padding:60px 40px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:64px;margin:0 0 8px;letter-spacing:-1px}
+  .tag{font-size:13px;letter-spacing:.25em;text-transform:uppercase;opacity:.7;margin-bottom:40px}
+  .row{display:flex;gap:14px;margin:24px 0;flex-wrap:wrap}
+  .sw{padding:24px 22px;border-radius:12px;min-width:160px;font-size:13px;font-weight:600}
+  .btn{display:inline-block;padding:14px 28px;border-radius:8px;font-weight:600;letter-spacing:.05em;font-size:14px;text-transform:uppercase;margin-right:12px;margin-top:20px;cursor:pointer;border:none}
+  .ghost{background:transparent;border:1.5px solid currentColor}
+  .label{font-size:12px;opacity:.6;margin-top:6px;font-family:monospace;font-weight:400}
+  .card{margin-top:36px;padding:28px;border-radius:14px;max-width:520px}
+  .price{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600}
+
+  /* OPTION 1 — Bosphorus Twilight */
+  .opt1{background:#0E0F12;color:#F2EDE4}
+  .opt1 .accent{color:#B8894A}
+  .opt1 .btn-primary{background:#B8894A;color:#0E0F12}
+  .opt1 .btn-ghost{color:#F2EDE4}
+  .opt1 .card{background:#1B3A4B;border:1px solid #2A5165}
+  .opt1 .price{color:#B8894A}
+
+  /* OPTION 3 — Strait Steel */
+  .opt3{background:#0E0F12;color:#F4F1EC}
+  .opt3 .accent{color:#B86B3A}
+  .opt3 .btn-primary{background:#B86B3A;color:#0E0F12}
+  .opt3 .btn-ghost{color:#F4F1EC}
+  .opt3 .card{background:#3A4A57;border:1px solid #4D6071}
+  .opt3 .price{color:#B86B3A}
+</style></head>
+<body>
+
+<section class="pal opt1">
+  <div class="tag">Option 1 · Bosphorus Twilight</div>
+  <h1>Bosphorus <span class="accent">Auto</span></h1>
+  <p style="max-width:560px;opacity:.75;font-size:16px;line-height:1.6">Black + deep teal-navy (water at dusk) + brass gold + cream. Hagia Sophia at sunset.</p>
+  <div class="row">
+    <div class="sw" style="background:#0E0F12;color:#F2EDE4;border:1px solid #2A2D33">Black<div class="label">#0E0F12</div></div>
+    <div class="sw" style="background:#1B3A4B;color:#F2EDE4">Bosphorus Navy<div class="label">#1B3A4B</div></div>
+    <div class="sw" style="background:#B8894A;color:#0E0F12">Brass Gold<div class="label">#B8894A</div></div>
+    <div class="sw" style="background:#F2EDE4;color:#0E0F12">Cream<div class="label">#F2EDE4</div></div>
+  </div>
+  <div>
+    <button class="btn btn-primary">View Inventory</button>
+    <button class="btn btn-ghost ghost">Schedule Visit</button>
+  </div>
+  <div class="card">
+    <div style="font-size:12px;letter-spacing:.2em;opacity:.7;text-transform:uppercase">Featured</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:28px;margin:6px 0">2026 Ferrari <em class="accent">812 Superfast</em></div>
+    <div class="price">$499,999</div>
+  </div>
+</section>
+
+<section class="pal opt3">
+  <div class="tag">Option 3 · Strait Steel</div>
+  <h1>Bosphorus <span class="accent">Auto</span></h1>
+  <p style="max-width:560px;opacity:.75;font-size:16px;line-height:1.6">Black + steel blue-gray + warm copper + off-white. Cooler, modern European auto magazine vibe.</p>
+  <div class="row">
+    <div class="sw" style="background:#0E0F12;color:#F4F1EC;border:1px solid #2A2D33">Black<div class="label">#0E0F12</div></div>
+    <div class="sw" style="background:#3A4A57;color:#F4F1EC">Steel Blue<div class="label">#3A4A57</div></div>
+    <div class="sw" style="background:#B86B3A;color:#0E0F12">Copper<div class="label">#B86B3A</div></div>
+    <div class="sw" style="background:#F4F1EC;color:#0E0F12">Off-white<div class="label">#F4F1EC</div></div>
+  </div>
+  <div>
+    <button class="btn btn-primary">View Inventory</button>
+    <button class="btn btn-ghost ghost">Schedule Visit</button>
+  </div>
+  <div class="card">
+    <div style="font-size:12px;letter-spacing:.2em;opacity:.7;text-transform:uppercase">Featured</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:28px;margin:6px 0">2026 Ferrari <em class="accent">812 Superfast</em></div>
+    <div class="price">$499,999</div>
+  </div>
+</section>
+
+</body></html>

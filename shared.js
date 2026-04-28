@@ -1,4 +1,4 @@
-/* shared.js — Gardena Motors */
+/* shared.js — Bosphorus Auto */
 
 /* ── GRAIN TEXTURE ── */
 (function () {

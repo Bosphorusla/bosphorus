@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loading… — Gardena Motors</title>
-  <meta name="description" content="View details, specs, and pricing for this vehicle at Gardena Motors in Gardena, CA." />
+  <title>Loading… — Bosphorus Auto</title>
+  <meta name="description" content="View details, specs, and pricing for this vehicle at Bosphorus Auto in Gardena, CA." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
@@ -13,15 +13,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:   #F5EFE4;
-      --cream-m: #EDE4D3;
-      --cream-d: #E0D4BC;
-      --terra:   #C4602A;
-      --terra-d: #A34E21;
-      --terra-l: #D97B46;
-      --char:    #1E1A17;
-      --char-m:  #3D3830;
-      --gray:    #8A8076;
+      --cream:   #0E0F12;
+      --cream-m: #16181C;
+      --cream-d: #2A2D33;
+      --terra:   #B8894A;
+      --terra-d: #9C7239;
+      --terra-l: #D4A66A;
+      --char:    #F2EDE4;
+      --char-m:  #C9C3B7;
+      --gray:    #8A8B8F;
       --white:   #FFFFFF;
     }
 
@@ -122,7 +122,7 @@
 
     /* Specs grid */
     .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--cream-d); border-radius: 10px; overflow: hidden; margin-bottom: 28px; }
-    .spec-cell { background: var(--white); padding: 14px 16px; }
+    .spec-cell { background: var(--cream-m); padding: 14px 16px; }
     .spec-cell:first-child { border-radius: 10px 0 0 0; }
     .spec-cell:nth-child(2) { border-radius: 0 10px 0 0; }
     .spec-cell:nth-last-child(2) { border-radius: 0 0 0 10px; }
@@ -146,7 +146,7 @@
     }
     .btn-call:hover { background: var(--terra-d); }
     .btn-text {
-      flex: 1; background: var(--white); color: var(--char);
+      flex: 1; background: var(--cream-m); color: var(--char);
       padding: 13px; border-radius: 8px; font-size: 0.88rem; font-weight: 500;
       text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 7px;
       border: 1.5px solid var(--cream-d); font-family: 'DM Sans', sans-serif; transition: border-color 0.18s;
@@ -164,7 +164,7 @@
     .inq-form { display: flex; flex-direction: column; gap: 10px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .inq-form input, .inq-form textarea, .inq-form select {
-      background: var(--white); border: 1.5px solid var(--cream-d);
+      background: var(--cream-m); border: 1.5px solid var(--cream-d);
       padding: 11px 14px; border-radius: 8px;
       font-size: 0.84rem; color: var(--char); font-family: 'DM Sans', sans-serif;
       transition: border-color 0.18s; outline: none; width: 100%;
@@ -189,7 +189,7 @@
 
     /* Card (reused from index) */
     .car-card {
-      background: var(--white); border-radius: 12px; overflow: hidden;
+      background: var(--cream-m); border-radius: 12px; overflow: hidden;
       border: 1px solid var(--cream-d); transition: box-shadow 0.22s, transform 0.22s; cursor: pointer;
     }
     .car-card:hover { box-shadow: 0 10px 40px rgba(30,26,23,0.1); transform: translateY(-2px); }
@@ -244,7 +244,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="wordmark" data-cfg="dealerName">Gardena Motors</a>
+  <a href="index.html" class="wordmark" data-cfg="dealerName">Bosphorus Auto</a>
   <div class="nav-right">
     <a href="index.html#inventory">Inventory</a>
     <a href="index.html#about">About</a>
@@ -338,7 +338,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-bottom">
-    <p id="cfg-copyright">© 2026 Gardena Motors · 1234 W Rosecrans Ave, Gardena CA 90249</p>
+    <p id="cfg-copyright">© 2026 Bosphorus Auto · 1234 W Rosecrans Ave, Gardena CA 90249</p>
     <a href="index.html">← Back to inventory</a>
   </div>
 </footer>
@@ -364,7 +364,7 @@ Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
     if (!car) { document.body.innerHTML = '<p style="padding:80px 6vw;font-family:sans-serif">Car not found. <a href="index.html">Back to inventory</a></p>'; return; }
 
     /* Page title */
-    document.title = `${car.year} ${car.make} ${car.model} — ${cfg ? cfg.dealerName : 'Gardena Motors'}`;
+    document.title = `${car.year} ${car.make} ${car.model} — ${cfg ? cfg.dealerName : 'Bosphorus Auto'}`;
     document.getElementById('bc-name').textContent = `${car.year} ${car.make} ${car.model}`;
 
     /* Info */

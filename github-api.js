@@ -1,5 +1,5 @@
 /**
- * GitHub API integration for Gardena Motors admin panel.
+ * GitHub API integration for Bosphorus Auto admin panel.
  * Token is prompted each time and never stored.
  *
  * SETUP: Once your site is on GitHub, update GITHUB_CONFIG below
