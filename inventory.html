@@ -35,7 +35,7 @@
       border-bottom: 1px solid var(--cream-d);
       padding: 0 6vw; display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
-    .wordmark { font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--char); text-decoration: none; }
+    .wordmark { font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--terra); text-decoration: none; }
     .nav-right { display: flex; align-items: center; gap: 30px; }
     .nav-right a { font-size: 0.82rem; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.18s; }
     .nav-right a:hover, .nav-right a.active { color: var(--char); }
@@ -364,7 +364,7 @@ Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
   .then(([cfg, data]) => {
     const cp = document.getElementById('cfg-copyright');
     if (cp && cfg) cp.textContent = `© ${cfg.year} ${cfg.dealerName} · ${cfg.address}, ${cfg.cityFull}`;
-    ALL_CARS = data;
+    ALL_CARS = data.filter(c => !c.hidden);
     buildMakeFilters();
     updateCounts();
     applyFilters();

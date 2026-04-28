@@ -217,6 +217,19 @@
       font-family: inherit; transition: all 0.16s;
     }
     .btn-del:hover { background: var(--rose); color: var(--white); border-color: var(--rose); }
+    .btn-toggle-hide {
+      padding: 6px 11px; background: none; border: 1px solid var(--cream-d);
+      color: var(--gray); border-radius: 5px; font-size: 0.75rem; cursor: pointer;
+      font-family: inherit; transition: all 0.16s;
+    }
+    .btn-toggle-hide:hover { background: var(--char); color: var(--white); border-color: var(--char); }
+    .car-edit.hidden-card { opacity: 0.55; background: repeating-linear-gradient(45deg, var(--white), var(--white) 10px, var(--cream) 10px, var(--cream) 20px); }
+    .car-edit.hidden-card:hover { opacity: 0.85; }
+    .hidden-tag {
+      display: inline-block; margin-left: 8px; padding: 2px 7px;
+      background: var(--gray); color: var(--white); border-radius: 4px;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; vertical-align: middle;
+    }
 
     /* ── CONTENT FORM ── */
     .form-section {
@@ -476,21 +489,27 @@ function updateCardTitle(i) {
 
 function updateInvMeta() {
   const hot = CARS.filter(c => c.hot).length;
+  const hidden = CARS.filter(c => c.hidden).length;
+  const visible = CARS.length - hidden;
   document.getElementById('invMeta').textContent =
-    `${CARS.length} car${CARS.length === 1 ? '' : 's'} · ${hot} hot deal${hot === 1 ? '' : 's'}`;
+    `${visible} live · ${hidden} hidden · ${hot} hot deal${hot === 1 ? '' : 's'}`;
 }
 
 function carCardHTML(c, i) {
   const types = ['sedan','suv','truck','coupe'];
   const transOpts = ['Automatic','Manual','CVT'];
   return `
-    <div class="car-edit ${c.hot ? 'hot-card' : ''}" data-idx="${i}">
+    <div class="car-edit ${c.hot ? 'hot-card' : ''} ${c.hidden ? 'hidden-card' : ''}" data-idx="${i}">
       <div class="car-edit-head">
         <div class="car-edit-title">
           ${c.year || '—'} ${c.make || ''} <em style="color:var(--terra);font-style:italic">${c.model || 'New car'}</em>
           <span class="car-edit-id">ID #${c.id ?? '?'}</span>
+          ${c.hidden ? '<span class="hidden-tag">HIDDEN</span>' : ''}
         </div>
-        <button class="btn-del" onclick="deleteCar(${i})">Delete</button>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn-toggle-hide" onclick="toggleHide(${i})">${c.hidden ? '👁 Show' : '🚫 Hide'}</button>
+          <button class="btn-del" onclick="deleteCar(${i})">Delete</button>
+        </div>
       </div>
       <div class="grid-fields">
         <div class="fld"><label>Year</label><input type="number" value="${c.year ?? ''}"  oninput="updCar(${i},'year',+this.value)"></div>
@@ -662,6 +681,12 @@ function updCar(i, key, val) {
 function refreshHotStripe(i) {
   const card = document.querySelector(`.car-edit[data-idx="${i}"]`);
   if (card) card.classList.toggle('hot-card', !!CARS[i].hot);
+}
+
+function toggleHide(i) {
+  CARS[i].hidden = !CARS[i].hidden;
+  markDirty();
+  renderInventory();
 }
 
 function updGrad(i, idx, hex) {

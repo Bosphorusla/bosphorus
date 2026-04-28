@@ -95,10 +95,10 @@
       font-family: 'Cormorant', serif;
       font-size: 1.15rem; font-weight: 600;
       letter-spacing: 0.13em; text-transform: uppercase;
-      color: var(--white); text-decoration: none;
+      color: var(--terra); text-decoration: none;
       transition: color 0.3s ease;
     }
-    nav.scrolled .wordmark { color: var(--char); }
+    nav.scrolled .wordmark { color: var(--terra); }
     .nav-right { display: flex; align-items: center; gap: 30px; }
     .nav-right a {
       font-size: 0.82rem; font-weight: 500; letter-spacing: 0.02em;
@@ -520,7 +520,7 @@
     /* ── FOOTER ── */
     footer { background: #14100D; padding: 56px 6vw 28px; }
     .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 44px; }
-    .footer-brand .wordmark { color: rgba(255,255,255,0.6); margin-bottom: 14px; display: inline-block; }
+    .footer-brand .wordmark { color: var(--terra); margin-bottom: 14px; display: inline-block; }
     .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.28); line-height: 1.82; max-width: 260px; }
     .foot-col h5 {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em;
@@ -1084,7 +1084,7 @@
 let CARS = [];
 Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
   .then(([cfg, data]) => {
-    CARS = data;
+    CARS = data.filter(c => !c.hidden);
     const cp = document.getElementById('cfg-copyright');
     if (cp && cfg) cp.textContent = `© ${cfg.year} ${cfg.dealerName}. All rights reserved.`;
     setupHeroVideo(cfg);

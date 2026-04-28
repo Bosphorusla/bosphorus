@@ -37,7 +37,7 @@
     }
     .wordmark {
       font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600;
-      letter-spacing: 0.13em; text-transform: uppercase; color: var(--char); text-decoration: none;
+      letter-spacing: 0.13em; text-transform: uppercase; color: var(--terra); text-decoration: none;
     }
     .nav-right { display: flex; align-items: center; gap: 30px; }
     .nav-right a { font-size: 0.82rem; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.18s; }
@@ -361,7 +361,7 @@ Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
     if (cp && cfg) cp.textContent = `© ${cfg.year} ${cfg.dealerName} · ${cfg.address}, ${cfg.cityFull}`;
 
     const car = cars.find(c => c.id === carId);
-    if (!car) { document.body.innerHTML = '<p style="padding:80px 6vw;font-family:sans-serif">Car not found. <a href="index.html">Back to inventory</a></p>'; return; }
+    if (!car || car.hidden) { document.body.innerHTML = '<p style="padding:80px 6vw;font-family:sans-serif">Car not found. <a href="index.html">Back to inventory</a></p>'; return; }
 
     /* Page title */
     document.title = `${car.year} ${car.make} ${car.model} — ${cfg ? cfg.dealerName : 'Bosphorus Auto'}`;
@@ -419,7 +419,7 @@ Promise.all([loadConfig(), fetch('cars.json').then(r=>r.json())])
     }
 
     /* Similar cars: same type, exclude current */
-    const similar = cars.filter(c => c.type === car.type && c.id !== car.id).slice(0, 4);
+    const similar = cars.filter(c => c.type === car.type && c.id !== car.id && !c.hidden).slice(0, 4);
     document.getElementById('similar-grid').innerHTML = similar.map(c => mkCard(c)).join('');
 
     /* Pre-fill message */
