@@ -31,16 +31,21 @@
     /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 200;
-      background: rgba(245,239,228,0.93); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--cream-d);
+      background: rgba(14,15,18,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,137,74,0.18);
       padding: 0 6vw; display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
     .wordmark { font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--terra); text-decoration: none; }
     .nav-right { display: flex; align-items: center; gap: 30px; }
-    .nav-right a { font-size: 0.82rem; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.18s; }
-    .nav-right a:hover, .nav-right a.active { color: var(--char); }
+    .nav-right a { font-size: 0.82rem; font-weight: 500; color: rgba(242,237,228,0.7); text-decoration: none; transition: color 0.18s; }
+    .nav-right a:hover, .nav-right a.active { color: var(--white); }
     .nav-cta { background: var(--terra) !important; color: var(--white) !important; padding: 8px 20px; border-radius: 7px; font-weight: 500 !important; transition: background 0.18s !important; }
     .nav-cta:hover { background: var(--terra-d) !important; }
+    .nav-mob-btn {
+      display: none; background: none; border: none; cursor: pointer; padding: 6px; gap: 5px;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .nav-mob-btn span { display: block; width: 22px; height: 2px; border-radius: 2px; background: var(--char); }
 
     /* ── PAGE HEADER ── */
     .page-header {
@@ -205,6 +210,8 @@
       .wordmark { font-size: 1.05rem; }
       .nav-right { gap: 14px; }
       .nav-right a:not(.nav-cta) { display: none; }
+      .nav-right.mob-open a:not(.nav-cta) { display: block; color: var(--char); font-size: 0.95rem; padding: 6px 0; }
+      .nav-mob-btn { display: flex; }
       .nav-cta { padding: 8px 14px !important; font-size: 0.78rem; }
       .page-header { flex-direction: column; align-items: flex-start; gap: 14px; padding: 24px 5vw; }
       .page-title { font-size: clamp(1.6rem, 6.5vw, 2.1rem); }
@@ -226,12 +233,16 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="wordmark" data-cfg="dealerName">Bosphorus Auto</a>
-  <div class="nav-right">
+  <div class="nav-right" id="nav-right">
     <a href="inventory.html" class="active">Inventory</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a>
+    <a href="index.html#how-it-works">How it works</a>
+    <a href="index.html#trade-in">Trade-in</a>
+    <a href="index.html#visit">Visit</a>
     <a href="tel:+13105550000" class="nav-cta" data-cfg-href="phoneTel">Call Us</a>
   </div>
+  <button class="nav-mob-btn" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- PAGE HEADER -->
@@ -501,6 +512,22 @@ function closeSidebar() { document.getElementById('sidebar').classList.remove('o
 function checkedValues(sel) { return [...document.querySelectorAll(sel)].filter(i => i.checked).map(i => i.value); }
 function num(id) { return parseInt(document.getElementById(id)?.value) || 0; }
 function milesRaw(c) { return parseInt(c.miles.replace(/,/g,'')) || 0; }
+
+function toggleNav() {
+  const nr = document.getElementById('nav-right');
+  const open = nr.classList.toggle('mob-open');
+  if (open) {
+    Object.assign(nr.style, {
+      display:'flex', flexDirection:'column', alignItems:'stretch',
+      position:'absolute', top:'56px', left:'0', right:'0',
+      background:'rgba(14,15,18,0.97)', backdropFilter:'blur(12px)',
+      borderBottom:'1px solid rgba(184,137,74,0.22)',
+      padding:'18px 5vw 22px', gap:'4px', zIndex:'199'
+    });
+  } else {
+    nr.removeAttribute('style');
+  }
+}
 </script>
 </body>
 </html>
