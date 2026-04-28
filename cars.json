@@ -1,5 +1,24 @@
 [
   {
+    "id": 1,
+    "year": 2021,
+    "make": "Toyota",
+    "model": "Camry LE",
+    "type": "sedan",
+    "price": 19500,
+    "miles": "34,200",
+    "trans": "Automatic",
+    "color": "Silver",
+    "engine": "2.5L 4-Cylinder",
+    "mpg": "28/39",
+    "vin": "4T1B11HK5MU000001",
+    "hot": false,
+    "g": [
+      "#9EA5AD",
+      "#6A7078"
+    ]
+  },
+  {
     "id": 2,
     "year": 2020,
     "make": "Honda",
@@ -22,22 +41,22 @@
     ]
   },
   {
-    "id": 1,
-    "year": 2021,
-    "make": "Toyota",
-    "model": "Camry LE",
+    "id": 3,
+    "year": 2019,
+    "make": "BMW",
+    "model": "3 Series 330i",
     "type": "sedan",
-    "price": 19500,
-    "miles": "34,200",
+    "price": 27800,
+    "miles": "52,400",
     "trans": "Automatic",
-    "color": "Silver",
-    "engine": "2.5L 4-Cylinder",
-    "mpg": "28/39",
-    "vin": "4T1B11HK5MU000001",
+    "color": "Black Sapphire",
+    "engine": "2.0L Turbo 4-Cylinder",
+    "mpg": "26/36",
+    "vin": "WBA5R1C50KAE00003",
     "hot": false,
     "g": [
-      "#9EA5AD",
-      "#6A7078"
+      "#2C2C2C",
+      "#101010"
     ]
   },
   {
@@ -62,25 +81,6 @@
       "assets/cars/31/mohwq93m-ferrari-812-competizione-2339-1.jpg"
     ],
     "hidden": false
-  },
-  {
-    "id": 3,
-    "year": 2019,
-    "make": "BMW",
-    "model": "3 Series 330i",
-    "type": "sedan",
-    "price": 27800,
-    "miles": "52,400",
-    "trans": "Automatic",
-    "color": "Black Sapphire",
-    "engine": "2.0L Turbo 4-Cylinder",
-    "mpg": "26/36",
-    "vin": "WBA5R1C50KAE00003",
-    "hot": false,
-    "g": [
-      "#2C2C2C",
-      "#101010"
-    ]
   },
   {
     "id": 4,
