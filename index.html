@@ -739,9 +739,17 @@
       .nav-right a:not(.nav-cta) { display: none; }
       .nav-cta { padding: 8px 14px; font-size: 0.78rem; }
       .nav-mob-btn { display: flex; }
-      .hero-visual { height: 300px; }
-      .hero-car-wrap.has-photo { width: 88%; }
-      .hero-car-photo { border-radius: 12px; }
+      .hero-visual { height: 440px; }
+      .hero-car-wrap.has-photo {
+        width: 92%; max-width: 100%;
+        top: 22px; bottom: auto; left: 50%;
+        transform: translateX(-50%);
+      }
+      .hero-car-wrap.has-photo.slide-out-l { transform: translateX(-180%); }
+      .hero-car-wrap.has-photo.slide-out-r { transform: translateX(80%); }
+      .hero-car-wrap.has-photo.slide-in-l  { transform: translateX(-180%); }
+      .hero-car-wrap.has-photo.slide-in-r  { transform: translateX(80%); }
+      .hero-car-photo { border-radius: 12px; aspect-ratio: 4/3; }
       .show-arrow { width: 38px; height: 38px; }
       .show-arrow.left { left: 10px; }
       .show-arrow.right { right: 10px; }
@@ -1210,6 +1218,23 @@ function buildShowroom() {
     if (e.key === 'ArrowLeft')  goShow(showIdx - 1, -1);
     if (e.key === 'ArrowRight') goShow(showIdx + 1, +1);
   });
+  /* Touch swipe on the hero visual */
+  const visual = document.querySelector('.hero-visual');
+  if (visual) {
+    let tx = 0, ty = 0, tt = 0, swiping = false;
+    visual.addEventListener('touchstart', e => {
+      const t = e.touches[0]; tx = t.clientX; ty = t.clientY; tt = Date.now(); swiping = true;
+    }, { passive: true });
+    visual.addEventListener('touchend', e => {
+      if (!swiping) return; swiping = false;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - tx, dy = t.clientY - ty, dt = Date.now() - tt;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.4 && dt < 600) {
+        if (dx < 0) goShow(showIdx + 1, +1);
+        else        goShow(showIdx - 1, -1);
+      }
+    }, { passive: true });
+  }
   paintShow(showIdx);
 }
 
